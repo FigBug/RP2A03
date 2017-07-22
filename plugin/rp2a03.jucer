@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.socalabs.RP2A03" includeBinaryInAppConfig="1"
+              buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" pluginName="RP2A03" pluginDesc="RP2A03" pluginManufacturer="SocaLabs"
+              pluginManufacturerCode="Soca" pluginCode="Tone" pluginChannelConfigs="{0,1}"
+              pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
+              pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="RP2A03AU"
+              pluginRTASCategory="" aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="AAX_ePlugInCategory_Dynamics"
+              jucerVersion="5.0.2" companyName="SocaLabs" companyWebsite="www.socalabs.com"
+              companyEmail="info@socalabs.com" displaySplashScreen="1" reportAppUsage="1"
+              splashScreenColour="Dark" buildStandalone="0" enableIAA="0">
+  <MAINGROUP id="dPRjsF" name="RP2A03">
+    <GROUP id="{EE796482-0D02-0052-80F4-B1FE6CE0D41A}" name="Source">
+      <GROUP id="{6F2315D7-3D20-892D-4519-7653440048F1}" name="APU">
+        <GROUP id="{47267D70-E942-E487-A052-138332AE48D3}" name="boost">
+          <FILE id="u7B77t" name="config.hpp" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/boost/config.hpp"/>
+          <FILE id="wLnFGi" name="cstdint.hpp" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/boost/cstdint.hpp"/>
+          <FILE id="TfOWOs" name="static_assert.hpp" compile="0" resource="0"
+                file="../3rdparty/Nes_Snd_Emu-0.1.7/boost/static_assert.hpp"/>
+        </GROUP>
+        <GROUP id="{103382F5-C1D3-9986-B8D1-42CBD844CF1E}" name="nes_apu">
+          <FILE id="xrhFdo" name="apu_snapshot.cpp" compile="1" resource="0"
+                file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/apu_snapshot.cpp"/>
+          <FILE id="jdfong" name="apu_snapshot.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/apu_snapshot.h"/>
+          <FILE id="LJdR7d" name="blargg_common.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/blargg_common.h"/>
+          <FILE id="MB20vv" name="blargg_source.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/blargg_source.h"/>
+          <FILE id="Ud9T0I" name="Blip_Buffer.cpp" compile="1" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Blip_Buffer.cpp"/>
+          <FILE id="wobY1W" name="Blip_Buffer.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Blip_Buffer.h"/>
+          <FILE id="e3XAN0" name="Blip_Synth.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Blip_Synth.h"/>
+          <FILE id="fIbPRE" name="Multi_Buffer.cpp" compile="1" resource="0"
+                file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Multi_Buffer.cpp"/>
+          <FILE id="jlnmpY" name="Multi_Buffer.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Multi_Buffer.h"/>
+          <FILE id="Ten1Vy" name="Nes_Apu.cpp" compile="1" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Apu.cpp"/>
+          <FILE id="BlFxes" name="Nes_Apu.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Apu.h"/>
+          <FILE id="FE08LO" name="Nes_Namco.cpp" compile="1" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Namco.cpp"/>
+          <FILE id="TukQHn" name="Nes_Namco.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Namco.h"/>
+          <FILE id="zjRj49" name="Nes_Oscs.cpp" compile="1" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Oscs.cpp"/>
+          <FILE id="sKsSME" name="Nes_Oscs.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Oscs.h"/>
+          <FILE id="bDGUI9" name="Nes_Vrc6.cpp" compile="1" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Vrc6.cpp"/>
+          <FILE id="NzXBXk" name="Nes_Vrc6.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Vrc6.h"/>
+          <FILE id="Au7DXe" name="Nonlinear_Buffer.cpp" compile="1" resource="0"
+                file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nonlinear_Buffer.cpp"/>
+          <FILE id="zHD028" name="Nonlinear_Buffer.h" compile="0" resource="0"
+                file="../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nonlinear_Buffer.h"/>
+        </GROUP>
+        <FILE id="zKjbpf" name="Simple_Apu.cpp" compile="1" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/Simple_Apu.cpp"/>
+        <FILE id="vX7TYI" name="Simple_Apu.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/Simple_Apu.h"/>
+      </GROUP>
+      <GROUP id="{DA748B7D-42D5-4A16-B897-0DD85D003309}" name="Common">
+        <FILE id="OqFKEq" name="slCommon.h" compile="0" resource="0" file="../common/slCommon.h"/>
+        <FILE id="uAifRS" name="slComponents.cpp" compile="1" resource="0"
+              file="../common/slComponents.cpp"/>
+        <FILE id="ARGeKK" name="slComponents.h" compile="0" resource="0" file="../common/slComponents.h"/>
+        <FILE id="PscLGE" name="slDsp.cpp" compile="1" resource="0" file="../common/slDsp.cpp"/>
+        <FILE id="s4L3VD" name="slDsp.h" compile="0" resource="0" file="../common/slDsp.h"/>
+        <FILE id="YoHhPP" name="slLookAndFeel.cpp" compile="1" resource="0"
+              file="../common/slLookAndFeel.cpp"/>
+        <FILE id="jEdGWZ" name="slLookAndFeel.h" compile="0" resource="0" file="../common/slLookAndFeel.h"/>
+        <FILE id="SwDyLl" name="slParameter.cpp" compile="1" resource="0" file="../common/slParameter.cpp"/>
+        <FILE id="mDC81E" name="slParameter.h" compile="0" resource="0" file="../common/slParameter.h"/>
+        <FILE id="stdpIp" name="slPluginEditor.cpp" compile="1" resource="0"
+              file="../common/slPluginEditor.cpp"/>
+        <FILE id="uMrYDd" name="slPluginEditor.h" compile="0" resource="0"
+              file="../common/slPluginEditor.h"/>
+        <FILE id="PFwMgo" name="slProcessor.cpp" compile="1" resource="0" file="../common/slProcessor.cpp"/>
+        <FILE id="x1bdG4" name="slProcessor.h" compile="0" resource="0" file="../common/slProcessor.h"/>
+        <FILE id="CJltYc" name="slProgram.cpp" compile="1" resource="0" file="../common/slProgram.cpp"/>
+        <FILE id="Sle1i3" name="slProgram.h" compile="0" resource="0" file="../common/slProgram.h"/>
+        <FILE id="EzVwqo" name="slUtil.cpp" compile="1" resource="0" file="../common/slUtil.cpp"/>
+        <FILE id="dqu2EA" name="slUtil.h" compile="0" resource="0" file="../common/slUtil.h"/>
+      </GROUP>
+      <FILE id="iEbZ9q" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="XzLyGB" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="sm654A" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="xX3taW" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-Wunused-value">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="RP2A03"
+                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../Common"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="RP2A03"
+                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../Common"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2015 targetFolder="Builds/VisualStudio2015">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="RP2A03" headerPath="../../../../common"
+                       postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files (x86)\VSTPlugins&quot;"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="RP2A03" headerPath="../../../../common"
+                       postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files (x86)\VSTPlugins&quot;"/>
+        <CONFIGURATION name="Debug64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="RP2A03" headerPath="../../../../common"
+                       postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files\VSTPlugins&quot;"/>
+        <CONFIGURATION name="Release64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="RP2A03" headerPath="../../../../common"
+                       postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files\VSTPlugins&quot;"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2015>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>
