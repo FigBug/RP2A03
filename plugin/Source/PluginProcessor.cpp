@@ -11,10 +11,24 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+const char* RP2A03AudioProcessor::paramPulse1Level      = "pulse1Level";
+const char* RP2A03AudioProcessor::paramPulse1DutyCycle  = "pulse1Duty";
+const char* RP2A03AudioProcessor::paramPulse2Level      = "pulse2Level";
+const char* RP2A03AudioProcessor::paramPulse2DutyCycle  = "pulse2Duty";
+const char* RP2A03AudioProcessor::paramTriangleLevel    = "triangleLevel";
+const char* RP2A03AudioProcessor::paramNoiseLevel       = "noiseLevel";
+const char* RP2A03AudioProcessor::paramNoisePeriod      = "noisePeriod";
+
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
-    addPluginParameter (new slParameter (PARAM_ENABLE,       "Enable",       "",     0.0f,      1.0f, 1.0f,    1.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "", 0.0f, 1.0f,  0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
+    addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "", 0.0f, 1.0f,  0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
+    addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "", 0.0f, 1.0f,  1.0f, 1.0f));
+    addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "", 0.0f, 1.0f,  0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramNoisePeriod,     "Noise Period",       "", 0.0f, 15.0f, 1.0f, 0.0f));
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -24,11 +38,8 @@ RP2A03AudioProcessor::~RP2A03AudioProcessor()
 //==============================================================================
 void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    enableVal.reset (sampleRate, 0.05);
-    
     apu.sample_rate (sampleRate);
-    
-    apu.write_register (0x4015, 0x01);
+    apu.write_register (0x4015, 0x0F);
 }
 
 void RP2A03AudioProcessor::releaseResources()
@@ -37,8 +48,6 @@ void RP2A03AudioProcessor::releaseResources()
 
 void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midi)
 {
-    enableVal.setValue (getParameter (PARAM_ENABLE)->getUserValue());
-    
     int pos = 0;
     MidiMessage msg;
     MidiBuffer::Iterator itr (midi);
@@ -57,10 +66,20 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     
     const int curNote = noteQueue.size() > 0 ? noteQueue.getFirst() : -1;
     
+    const float p1Level = getParameter (paramPulse1Level)->getUserValue();
+    const int p1Duty    = getParameter (paramPulse1DutyCycle)->getUserValue();
+    const float p2Level = getParameter (paramPulse2Level)->getUserValue();
+    const int p2Duty    = getParameter (paramPulse2DutyCycle)->getUserValue();
+    const float tLevel  = getParameter (paramTriangleLevel)->getUserValue();
+    const float nLevel  = getParameter (paramNoiseLevel)->getUserValue();
+    const int nPeriod   = getParameter (paramNoisePeriod)->getUserValue();
+    
     if (curNote != lastNote)
     {
         int v = curNote == -1 ? 0 : velocity;
-        apu.write_register (0x4000, 0xF0 | int (v / 127.0 * 0xF));
+        
+        // Pulse 1
+        apu.write_register (0x4000, (p1Duty << 6) | 0x30 | int (p1Level * v / 127.0 * 0xF));
         
         if (curNote != -1)
         {
@@ -69,6 +88,37 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             apu.write_register (0x4002, period & 0xFF);
             apu.write_register (0x4003, (period >> 8) & 0x7);
         }
+        
+        // Pulse 2
+        apu.write_register (0x4004, (p2Duty << 6) | 0x30 | int (p2Level * v / 127.0 * 0xF));
+        
+        if (curNote != -1)
+        {
+            int period = 111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1;
+            
+            apu.write_register (0x4006, period & 0xFF);
+            apu.write_register (0x4007, (period >> 8) & 0x7);
+        }
+        
+        // Triangle
+        apu.write_register (0x4008, curNote == -1 ? 0x00 : 0xFF);
+        if (curNote != -1)
+        {
+            int period = tLevel == 1.0f ? 111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1 : 0;
+            
+            apu.write_register (0x400A, period & 0xFF);
+            apu.write_register (0x400B, (period >> 8) & 0x7);
+        }
+        
+        // Noise
+        apu.write_register (0x400C, 0x30 | int (nLevel * v / 127.0 * 0xF));
+        
+        if (curNote != -1)
+        {
+            apu.write_register (0x400E, nPeriod);
+            apu.write_register (0x400F, 0xFF);
+        }
+        
         lastNote = curNote;
     }
     

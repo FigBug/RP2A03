@@ -15,8 +15,6 @@
 #include "Simple_Apu.h"
 #include "slCommon.h"
 
-#define PARAM_ENABLE        "enable"
-
 //==============================================================================
 /**
 */
@@ -40,6 +38,14 @@ public:
     //==============================================================================
     
     LevelTracker& getOutputLevel() { return outputLevel; }
+    
+    static const char* paramPulse1Level;
+    static const char* paramPulse1DutyCycle;
+    static const char* paramPulse2Level;
+    static const char* paramPulse2DutyCycle;
+    static const char* paramTriangleLevel;
+    static const char* paramNoiseLevel;
+    static const char* paramNoisePeriod;
 
 private:
     LevelTracker outputLevel {48.0};
@@ -48,7 +54,6 @@ private:
     int velocity = 0;
     Array<int> noteQueue;
     
-    LinearSmoothedValue<float> enableVal;
     Simple_Apu apu;
     
     //==============================================================================
