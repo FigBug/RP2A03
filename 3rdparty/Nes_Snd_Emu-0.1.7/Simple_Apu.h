@@ -32,6 +32,9 @@ public:
 	
 	// End a 1/60 sound frame
 	void end_frame();
+    
+    // Step
+    void step();
 	
 	// Number of samples in buffer
 	long samples_avail() const;

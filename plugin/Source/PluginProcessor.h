@@ -48,6 +48,8 @@ public:
     static const char* paramNoisePeriod;
 
 private:
+    void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
+    
     LevelTracker outputLevel {48.0};
 
     int lastNote = -1;

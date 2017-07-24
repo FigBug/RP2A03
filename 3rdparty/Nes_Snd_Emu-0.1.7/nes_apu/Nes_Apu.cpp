@@ -235,7 +235,7 @@ static const unsigned char length_table [0x20] = {
 
 void Nes_Apu::write_register( cpu_time_t time, cpu_addr_t addr, int data )
 {
-	require( addr > 0x20 ); // addr must be actual address (i.e. 0x40xx)
+	require( addr >= start_addr && addr <= end_addr ); // addr must be actual address (i.e. 0x40xx)
 	require( (unsigned) data <= 0xff );
 	
 	// Ignore addresses outside range

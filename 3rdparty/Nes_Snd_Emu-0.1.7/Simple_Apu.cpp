@@ -61,6 +61,13 @@ void Simple_Apu::end_frame()
 	buf.end_frame( frame_length );
 }
 
+void Simple_Apu::step()
+{
+    int length = 64;
+    apu.end_frame( length );
+    buf.end_frame( length );
+}
+
 long Simple_Apu::samples_avail() const
 {
 	return buf.samples_avail();
