@@ -17,7 +17,7 @@ const char* RP2A03AudioProcessor::paramPulse2Level      = "pulse2Level";
 const char* RP2A03AudioProcessor::paramPulse2DutyCycle  = "pulse2Duty";
 const char* RP2A03AudioProcessor::paramTriangleLevel    = "triangleLevel";
 const char* RP2A03AudioProcessor::paramNoiseLevel       = "noiseLevel";
-const char* RP2A03AudioProcessor::paramNoisePeriod      = "noisePeriod";
+const char* RP2A03AudioProcessor::paramNoiseShort       = "noisePeriod";
 
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
@@ -28,7 +28,7 @@ RP2A03AudioProcessor::RP2A03AudioProcessor()
     addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
     addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "", 0.0f, 1.0f,  1.0f, 0.0f));
     addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "", 0.0f, 1.0f,  0.0f, 0.0f));
-    addPluginParameter (new slParameter (paramNoisePeriod,     "Noise Period",       "", 0.0f, 15.0f, 1.0f, 0.0f));
+    addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "", 0.0f, 1.0f,  1.0f, 0.0f));
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -76,7 +76,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     const int p2Duty    = getParameter (paramPulse2DutyCycle)->getUserValue();
     const float tLevel  = getParameter (paramTriangleLevel)->getUserValue();
     const float nLevel  = getParameter (paramNoiseLevel)->getUserValue();
-    const int nPeriod   = getParameter (paramNoisePeriod)->getUserValue();
+    const bool nShort   = getParameter (paramNoiseShort)->getUserValue();
 
     int done = 0;
     runUntil (done, buffer, 0);
@@ -92,10 +92,14 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
         {
             noteQueue.add (msg.getNoteNumber());
             velocity = msg.getVelocity();
+            
+            printf ("Note on: %d\n", msg.getNoteNumber());
         }
         else if (msg.isNoteOff())
         {
             noteQueue.removeFirstMatchingValue (msg.getNoteNumber());
+            
+            printf ("Note off: %d\n", msg.getNoteNumber());
         }
         
         const int curNote = noteQueue.size() > 0 ? noteQueue.getFirst() : -1;
@@ -141,7 +145,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             
             if (curNote != -1)
             {
-                apu.write_register (0x400E, nPeriod);
+                apu.write_register (0x400E, (nShort ? 0x80 : 0x00) | (curNote % 16));
                 apu.write_register (0x400F, 0xFF);
             }
             

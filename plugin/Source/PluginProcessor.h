@@ -45,7 +45,7 @@ public:
     static const char* paramPulse2DutyCycle;
     static const char* paramTriangleLevel;
     static const char* paramNoiseLevel;
-    static const char* paramNoisePeriod;
+    static const char* paramNoiseShort;
 
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
