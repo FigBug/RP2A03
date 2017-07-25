@@ -101,6 +101,12 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             
             printf ("Note off: %d\n", msg.getNoteNumber());
         }
+        else if (msg.isAllNotesOff())
+        {
+            noteQueue.clear();
+            
+            printf ("All notes off\n");
+        }
         
         const int curNote = noteQueue.size() > 0 ? noteQueue.getFirst() : -1;
         
