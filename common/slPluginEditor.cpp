@@ -17,7 +17,7 @@ void slAudioProcessorEditor::paint (Graphics& g)
 {
     if (slLookAndFeel* lf = dynamic_cast<slLookAndFeel*> (&getLookAndFeel()))
     {
-        g.fillAll (lf->veryPaleYellow);
+        g.fillAll (Colours::black);
     }
 }
 
