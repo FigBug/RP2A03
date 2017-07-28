@@ -13,6 +13,10 @@
 
 const char* RP2A03AudioProcessor::paramPulse1Level      = "pulse1Level";
 const char* RP2A03AudioProcessor::paramPulse1DutyCycle  = "pulse1Duty";
+const char* RP2A03AudioProcessor::paramPulse1A          = "pulse1A";
+const char* RP2A03AudioProcessor::paramPulse1D          = "pulse1D";
+const char* RP2A03AudioProcessor::paramPulse1S          = "pulse1S";
+const char* RP2A03AudioProcessor::paramPulse1R          = "pulse1R";
 const char* RP2A03AudioProcessor::paramPulse2Level      = "pulse2Level";
 const char* RP2A03AudioProcessor::paramPulse2DutyCycle  = "pulse2Duty";
 const char* RP2A03AudioProcessor::paramTriangleLevel    = "triangleLevel";
@@ -20,12 +24,89 @@ const char* RP2A03AudioProcessor::paramNoiseLevel       = "noiseLevel";
 const char* RP2A03AudioProcessor::paramNoiseShort       = "noisePeriod";
 
 //==============================================================================
+void RP2A03AudioProcessor::ADSR::set (float a_, float d_, float s_, float r_)
+{
+    a = a_;
+    d = d_;
+    s = s_;
+    r = r_;
+}
+
+void RP2A03AudioProcessor::ADSR::start (int level)
+{
+    maxLevel = 127; //level;
+    mode = mAttack;
+    tic = ticPerStep = sampleRate * a / maxLevel;
+    currentLevel = jmin (currentLevel, maxLevel);
+}
+
+void RP2A03AudioProcessor::ADSR::stop()
+{
+    mode = mRelease;
+    tic = ticPerStep = sampleRate * d / currentLevel;
+}
+
+bool RP2A03AudioProcessor::ADSR::run (int numSamples)
+{
+    if (mode == mStop || mode == mSustain)
+        return false;
+    
+    tic -= numSamples;
+    
+    if (tic <= 0)
+    {
+        switch (mode)
+        {
+            case mAttack:
+                currentLevel++;
+                if (currentLevel >= maxLevel)
+                {
+                    mode = mDecay;
+                    tic = ticPerStep = sampleRate * d / (currentLevel - currentLevel * s);
+                    return true;
+                }
+                tic = ticPerStep;
+                return true;
+            case mDecay:
+                currentLevel--;
+                if (currentLevel <= maxLevel * s)
+                    mode = mSustain;
+                else
+                    tic = ticPerStep;
+                return true;
+            case mRelease:
+                currentLevel--;
+                if (currentLevel <= 0)
+                    mode = mStop;
+                else
+                    tic = ticPerStep;
+                return true;
+            default:
+                break;
+        }
+    }
+    
+    return false;
+}
+
+int RP2A03AudioProcessor::ADSR::getCurrentLevel()
+{
+    return jlimit (0, 0xF, currentLevel);
+}
+
+//==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
     addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "", 0.0f, 1.0f,  0.0f, 1.0f));
     addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
+    addPluginParameter (new slParameter (paramPulse1A,         "Pulse 1 A",          "", 0.0f, 1.0f,  0.0f, 0.0f));
+    addPluginParameter (new slParameter (paramPulse1D,         "Pulse 1 D",          "", 0.0f, 1.0f,  0.0f, 0.0f));
+    addPluginParameter (new slParameter (paramPulse1S,         "Pulse 1 S",          "", 0.0f, 1.0f,  0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse1R,         "Pulse 1 R",          "", 0.0f, 1.0f,  0.0f, 0.0f));
+    
     addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "", 0.0f, 1.0f,  0.0f, 0.0f));
     addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
+    
     addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "", 0.0f, 1.0f,  1.0f, 0.0f));
     addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "", 0.0f, 1.0f,  0.0f, 0.0f));
     addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "", 0.0f, 1.0f,  1.0f, 0.0f));
@@ -40,6 +121,8 @@ void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock
 {
     apu.sample_rate (sampleRate);
     apu.write_register (0x4015, 0x0F);
+    
+    p1ADSR.sampleRate = sampleRate;
 }
 
 void RP2A03AudioProcessor::releaseResources()
@@ -64,6 +147,13 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
         
         done += count;
         todo -= count;
+        
+        if (p1ADSR.run (count))
+        {
+            const int p1Duty    = getParameter (paramPulse1DutyCycle)->getUserValue();
+
+            apu.write_register (0x4000, (p1Duty << 6) | 0x30 | p1ADSR.getCurrentLevel());
+        }
     }
 
 }
@@ -72,6 +162,10 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
 {
     const float p1Level = getParameter (paramPulse1Level)->getUserValue();
     const int p1Duty    = getParameter (paramPulse1DutyCycle)->getUserValue();
+    const float p1A     = getParameter (paramPulse1A)->getUserValue();
+    const float p1D     = getParameter (paramPulse1D)->getUserValue();
+    const float p1S     = getParameter (paramPulse1S)->getUserValue();
+    const float p1R     = getParameter (paramPulse1R)->getUserValue();
     const float p2Level = getParameter (paramPulse2Level)->getUserValue();
     const int p2Duty    = getParameter (paramPulse2DutyCycle)->getUserValue();
     const float tLevel  = getParameter (paramTriangleLevel)->getUserValue();
@@ -80,6 +174,8 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
 
     int done = 0;
     runUntil (done, buffer, 0);
+    
+    p1ADSR.set (p1A, p1D, p1S, p1R);
     
     int pos = 0;
     MidiMessage msg;
@@ -115,7 +211,12 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             int v = curNote == -1 ? 0 : velocity;
             
             // Pulse 1
-            apu.write_register (0x4000, (p1Duty << 6) | 0x30 | int (p1Level * v / 127.0 * 0xF));
+            if (v == 0)
+                p1ADSR.stop();
+            else
+                p1ADSR.start (int (p1Level * v / 127.0 * 0xF));
+            
+            apu.write_register (0x4000, (p1Duty << 6) | 0x30 | p1ADSR.getCurrentLevel());
             
             if (curNote != -1)
             {

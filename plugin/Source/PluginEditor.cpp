@@ -25,7 +25,7 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     addAndMakeVisible (&meter);
     
-    setSize (600, 150);
+    setSize (800, 150);
 }
 
 RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()

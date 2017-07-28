@@ -41,9 +41,16 @@ public:
     
     static const char* paramPulse1Level;
     static const char* paramPulse1DutyCycle;
+    static const char* paramPulse1A;
+    static const char* paramPulse1D;
+    static const char* paramPulse1S;
+    static const char* paramPulse1R;
+    
     static const char* paramPulse2Level;
     static const char* paramPulse2DutyCycle;
+    
     static const char* paramTriangleLevel;
+    
     static const char* paramNoiseLevel;
     static const char* paramNoiseShort;
 
@@ -57,6 +64,29 @@ private:
     Array<int> noteQueue;
     
     Simple_Apu apu;
+    
+    class ADSR
+    {
+    public:
+        void set (float a, float d, float s, float r);
+        
+        void start (int level);
+        void stop();
+        
+        bool run (int numSamples);
+        int getCurrentLevel();
+        
+        float a = 0.0f, d = 0.0f, s = 0.0f , r = 0.0;
+        float sampleRate = 44100.0f;
+        int maxLevel = 0;
+        int currentLevel = 0;
+        int tic = 0, ticPerStep;
+        
+        enum Mode { mStop, mAttack, mDecay, mSustain, mRelease };
+        Mode mode = mStop;
+    };
+    
+    ADSR p1ADSR;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RP2A03AudioProcessor)
