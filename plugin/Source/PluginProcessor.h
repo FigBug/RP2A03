@@ -18,6 +18,7 @@
 //==============================================================================
 /**
 */
+class RP2A03AudioProcessorEditor;
 class RP2A03AudioProcessor : public slProcessor
 {
 public:
@@ -37,8 +38,6 @@ public:
 
     //==============================================================================
     
-    LevelTracker& getOutputLevel() { return outputLevel; }
-    
     static const char* paramPulse1Level;
     static const char* paramPulse1DutyCycle;
     static const char* paramPulse2Level;
@@ -46,15 +45,17 @@ public:
     static const char* paramTriangleLevel;
     static const char* paramNoiseLevel;
     static const char* paramNoiseShort;
+    static const char* paramOutput;
 
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
     
-    LevelTracker outputLevel {48.0};
-
     int lastNote = -1;
     int velocity = 0;
     Array<int> noteQueue;
+    
+    LinearSmoothedValue<float> outputSmoothed;
+    Component::SafePointer<RP2A03AudioProcessorEditor> editor;
     
     Simple_Apu apu;
     

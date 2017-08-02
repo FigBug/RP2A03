@@ -20,6 +20,60 @@
     <Filter Include="RP2A03">
       <UniqueIdentifier>{E201001A-EC5A-6753-313C-F8B49A9AFD31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio\fft\fftreal">
+      <UniqueIdentifier>{7838572E-1B3F-3686-33BB-35915DB5D3E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio\fft">
+      <UniqueIdentifier>{DF60BE62-63FF-5109-C13F-E2284C1CB375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio\filters">
+      <UniqueIdentifier>{28C03BFE-C12D-33A6-6DC8-F54B3E334DE1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio\soundtouch">
+      <UniqueIdentifier>{43A55DF2-690D-83B7-9B1F-E62D6B9E7419}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\audio">
+      <UniqueIdentifier>{394225AF-149C-4A75-393B-3349719FFD32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\gui\audiothumbnail">
+      <UniqueIdentifier>{840F6F18-B2F9-D476-7903-37B0236BB6E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\gui\filebrowser">
+      <UniqueIdentifier>{57BCC3D7-F317-AC45-6914-9EE739A8CCEC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\gui">
+      <UniqueIdentifier>{98C3A831-BCC5-32C5-8054-DB3F20B0BB82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\maths">
+      <UniqueIdentifier>{B0C941F2-A3D7-2D50-751C-8AC1183EF3B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\native">
+      <UniqueIdentifier>{EF961A81-DD12-D7DC-8013-B683FAF5AE28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\network\curl\include\curl">
+      <UniqueIdentifier>{B2058033-5BDB-4CDA-6F5E-08CB0085C88B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\network\curl\include">
+      <UniqueIdentifier>{310C5F4E-94DA-0289-F3E5-B3586AC4B178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\network\curl">
+      <UniqueIdentifier>{1D95A205-CEBC-B27F-1519-A77E76F230D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\network">
+      <UniqueIdentifier>{D9C6D58D-9693-32C3-23DD-8500A64A5575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\parameters">
+      <UniqueIdentifier>{DEAA0BC6-11D5-FB95-7088-49FE155DF636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\streams">
+      <UniqueIdentifier>{9F5808D9-0421-F73F-7B65-7E3BEF627F2F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio\utility">
+      <UniqueIdentifier>{4C3349D9-280D-1AF7-6924-94F0202E669D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\dRowAudio">
+      <UniqueIdentifier>{9A99805F-1A92-4673-A86C-944DCA35F3D3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules\juce_audio_basics\audio_play_head">
       <UniqueIdentifier>{52045BA8-DF89-5074-688D-A0977F25B09C}</UniqueIdentifier>
     </Filter>
@@ -145,6 +199,21 @@
     </Filter>
     <Filter Include="Juce Modules\juce_audio_processors">
       <UniqueIdentifier>{0B0E7392-324B-088C-FBEB-5FE999D61782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\juce_audio_utils\audio_cd">
+      <UniqueIdentifier>{C396369E-8C55-88E9-5D19-5D3772B773D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\juce_audio_utils\gui">
+      <UniqueIdentifier>{8167E753-09C7-5D1C-EF2B-32D297557443}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\juce_audio_utils\native">
+      <UniqueIdentifier>{B48C883A-8483-AF6D-808C-1D9A749048D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\juce_audio_utils\players">
+      <UniqueIdentifier>{AEDCB7F7-7A36-5392-8E9A-715F5BDE35CB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\juce_audio_utils">
+      <UniqueIdentifier>{B63F69FD-8A40-8E1E-E7ED-419B8DC1C12B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Juce Modules\juce_core\containers">
       <UniqueIdentifier>{0608ADE9-66EF-1A19-6D57-12D07F76EB53}</UniqueIdentifier>
@@ -441,6 +510,210 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
       <Filter>RP2A03\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_FFT.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_LTAS.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_mac_FFTOperation.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_Window.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\filters\dRowAudio_BiquadFilter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\AAFilter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\BPMDetect.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\cpu_detect_x64_gcc.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\cpu_detect_x64_win.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\cpu_detect_x86_gcc.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\cpu_detect_x86_win.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\FIFOSampleBuffer.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\FIRFilter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\mmx_optimized.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\PeakFinder.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\RateTransposer.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\SoundTouch.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\SoundTouch_Source.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\sse_optimized.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\TDStretch.cpp">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioFilePlayer.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioUtilityUnitTests.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_EnvelopeFollower.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_FilteringAudioSource.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_LoopingAudioSource.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_PitchDetector.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_ReversibleAudioSource.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_SampleRateConverter.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_SoundTouchProcessor.cpp">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.cpp">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_AudioFileDropTarget.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_AudioOscilloscope.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_AudioTransportCursor.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_CentreAlignViewport.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Clock.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_CpuMeter.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_DefaultColours.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_GraphicalComponent.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_MusicLibraryTable.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_SegmentedMeter.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Sonogram.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Spectrograph.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Spectroscope.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_TriggeredScope.cpp">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\maths\dRowAudio_MathsUnitTests.cpp">
+      <Filter>Juce Modules\dRowAudio\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\native\dRowAudio_AudioPicker.mm">
+      <Filter>Juce Modules\dRowAudio\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\native\dRowAudio_AVAssetAudioFormat.mm">
+      <Filter>Juce Modules\dRowAudio\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\native\dRowAudio_IOSAudioConverter.mm">
+      <Filter>Juce Modules\dRowAudio\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\network\dRowAudio_CURLEasySession.cpp">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\network\dRowAudio_CURLManager.cpp">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\parameters\dRowAudio_PluginParameter.cpp">
+      <Filter>Juce Modules\dRowAudio\parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\streams\dRowAudio_MemoryInputSource.cpp">
+      <Filter>Juce Modules\dRowAudio\streams</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_EncryptedString.cpp">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_ITunesLibrary.cpp">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_ITunesLibraryParser.cpp">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_UnityBuilder.cpp">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_UnityProjectBuilder.cpp">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\dRowAudio.cpp">
+      <Filter>Juce Modules\dRowAudio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\drowaudio\module\dRowAudio\dRowAudio.mm">
+      <Filter>Juce Modules\dRowAudio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
@@ -906,6 +1179,69 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_processors\juce_audio_processors.mm">
       <Filter>Juce Modules\juce_audio_processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\audio_cd\juce_AudioCDReader.cpp">
+      <Filter>Juce Modules\juce_audio_utils\audio_cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioAppComponent.cpp">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.cpp">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnail.cpp">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnailCache.cpp">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioVisualiserComponent.cpp">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_MidiKeyboardComponent.cpp">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_android_BluetoothMidiDevicePairingDialogue.cpp">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_ios_BluetoothMidiDevicePairingDialogue.mm">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_linux_AudioCDReader.cpp">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_linux_BluetoothMidiDevicePairingDialogue.cpp">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_mac_AudioCDBurner.mm">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_mac_AudioCDReader.mm">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_mac_BluetoothMidiDevicePairingDialogue.mm">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_win_BluetoothMidiDevicePairingDialogue.cpp">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_win32_AudioCDBurner.cpp">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\native\juce_win32_AudioCDReader.cpp">
+      <Filter>Juce Modules\juce_audio_utils\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.cpp">
+      <Filter>Juce Modules\juce_audio_utils\players</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\players\juce_SoundPlayer.cpp">
+      <Filter>Juce Modules\juce_audio_utils\players</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\juce_audio_utils.cpp">
+      <Filter>Juce Modules\juce_audio_utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_utils\juce_audio_utils.mm">
+      <Filter>Juce Modules\juce_audio_utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_core\containers\juce_AbstractFifo.cpp">
       <Filter>Juce Modules\juce_core\containers</Filter>
@@ -2161,6 +2497,9 @@
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_video\juce_video.mm">
       <Filter>Juce Modules\juce_video</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\include_dRowAudio.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
@@ -2174,6 +2513,9 @@
       <Filter>Juce Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_processors.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_utils.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_core.cpp">
@@ -2282,6 +2624,333 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
       <Filter>RP2A03\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\Array.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\Array.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\def.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\DynArray.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\DynArray.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTReal.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTReal.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealFixLen.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealFixLen.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealFixLenParam.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealPassDirect.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealPassDirect.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealPassInverse.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealPassInverse.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealSelect.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealSelect.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealUseTrigo.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\FFTRealUseTrigo.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\OscSinCos.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\fftreal\OscSinCos.hpp">
+      <Filter>Juce Modules\dRowAudio\audio\fft\fftreal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_FFT.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_LTAS.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\fft\dRowAudio_Window.h">
+      <Filter>Juce Modules\dRowAudio\audio\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\filters\dRowAudio_BiquadFilter.h">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\filters\dRowAudio_OnePoleFilter.h">
+      <Filter>Juce Modules\dRowAudio\audio\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\AAFilter.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\BPMDetect.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\cpu_detect.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\FIFOSampleBuffer.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\FIFOSamplePipe.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\FIRFilter.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\PeakFinder.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\RateTransposer.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\SoundTouch.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\soundtouch_config.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\SoundTouch_Includes.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\STTypes.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\soundtouch\TDStretch.h">
+      <Filter>Juce Modules\dRowAudio\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioFilePlayer.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioFilePlayerExt.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioSampleBufferAudioFormat.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_AudioUtility.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_Buffer.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_EnvelopeFollower.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_FifoBuffer.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_FilteringAudioSource.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_LoopingAudioSource.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_Pitch.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_PitchDetector.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_ReversibleAudioSource.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_SampleRateConverter.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_SoundTouchAudioSource.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\audio\dRowAudio_SoundTouchProcessor.h">
+      <Filter>Juce Modules\dRowAudio\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_AudioThumbnailImage.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_ColouredAudioThumbnail.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_DraggableWaveDisplay.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\audiothumbnail\dRowAudio_PositionableWaveDisplay.h">
+      <Filter>Juce Modules\dRowAudio\gui\audiothumbnail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\filebrowser\dRowAudio_BasicFileBrowser.h">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowser.h">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\filebrowser\dRowAudio_ColumnFileBrowserLookAndFeel.h">
+      <Filter>Juce Modules\dRowAudio\gui\filebrowser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_AudioFileDropTarget.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_AudioOscilloscope.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_AudioTransportCursor.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_CentreAlignViewport.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Clock.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_CpuMeter.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_DefaultColours.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_GraphicalComponent.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_GuiHelpers.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_MusicLibraryTable.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_SegmentedMeter.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Sonogram.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Spectrograph.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_Spectroscope.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\gui\dRowAudio_TriggeredScope.h">
+      <Filter>Juce Modules\dRowAudio\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\maths\dRowAudio_BezierCurve.h">
+      <Filter>Juce Modules\dRowAudio\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\maths\dRowAudio_CumulativeMovingAverage.h">
+      <Filter>Juce Modules\dRowAudio\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\maths\dRowAudio_MathsUtilities.h">
+      <Filter>Juce Modules\dRowAudio\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\native\dRowAudio_AudioPicker.h">
+      <Filter>Juce Modules\dRowAudio\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\native\dRowAudio_AVAssetAudioFormat.h">
+      <Filter>Juce Modules\dRowAudio\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\native\dRowAudio_IOSAudioConverter.h">
+      <Filter>Juce Modules\dRowAudio\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\curl.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\curlbuild.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\curlrules.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\curlver.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\easy.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\mprintf.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\multi.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\stdcheaders.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\curl\include\curl\typecheck-gcc.h">
+      <Filter>Juce Modules\dRowAudio\network\curl\include\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\dRowAudio_CURLEasySession.h">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\network\dRowAudio_CURLManager.h">
+      <Filter>Juce Modules\dRowAudio\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\parameters\dRowAudio_PluginParameter.h">
+      <Filter>Juce Modules\dRowAudio\parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\streams\dRowAudio_MemoryInputSource.h">
+      <Filter>Juce Modules\dRowAudio\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\streams\dRowAudio_StreamAndFileHandler.h">
+      <Filter>Juce Modules\dRowAudio\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_Comparators.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_Constants.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_DebugObject.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_EncryptedString.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_ITunesLibrary.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_ITunesLibraryParser.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_LockedPointer.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_MusicLibraryHelpers.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_StateVariable.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_UnityBuilder.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_UnityProjectBuilder.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_Utility.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\utility\dRowAudio_XmlHelpers.h">
+      <Filter>Juce Modules\dRowAudio\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\drowaudio\module\dRowAudio\dRowAudio.h">
+      <Filter>Juce Modules\dRowAudio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>Juce Modules\juce_audio_basics\audio_play_head</Filter>
@@ -2951,6 +3620,45 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_processors\juce_audio_processors.h">
       <Filter>Juce Modules\juce_audio_processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\audio_cd\juce_AudioCDBurner.h">
+      <Filter>Juce Modules\juce_audio_utils\audio_cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\audio_cd\juce_AudioCDReader.h">
+      <Filter>Juce Modules\juce_audio_utils\audio_cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioAppComponent.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnail.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnailBase.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnailCache.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_AudioVisualiserComponent.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_BluetoothMidiDevicePairingDialogue.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\gui\juce_MidiKeyboardComponent.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.h">
+      <Filter>Juce Modules\juce_audio_utils\players</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\players\juce_SoundPlayer.h">
+      <Filter>Juce Modules\juce_audio_utils\players</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_utils\juce_audio_utils.h">
+      <Filter>Juce Modules\juce_audio_utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_core\containers\juce_AbstractFifo.h">
       <Filter>Juce Modules\juce_core\containers</Filter>

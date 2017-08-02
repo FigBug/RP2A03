@@ -27,11 +27,10 @@ public:
     //==============================================================================
     void resized() override;
 
-private:
     RP2A03AudioProcessor& processor;
     
     OwnedArray<ParamComponent> controls;
-    LevelMeter meter;
+    drow::TriggeredScope scope;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RP2A03AudioProcessorEditor)
 };
