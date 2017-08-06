@@ -29,8 +29,8 @@ void Readout::parameterChanged (slParameter *source)
 }
 
 //==============================================================================
-ParamComponent::ParamComponent (slParameter* parameter)
-  : Component ("")
+ParamComponent::ParamComponent (slParameter* parameter_)
+  : Component (""), parameter (parameter_)
 {
     
 }
@@ -58,4 +58,24 @@ void Knob::resized()
     name.setBounds (r.removeFromTop (20));
     value.setBounds (r.removeFromBottom (20));
     knob.setBounds (r);
+}
+//==============================================================================
+Switch::Switch (slParameter* parameter)
+  : ParamComponent (parameter),
+    button (parameter)
+{
+    addAndMakeVisible (&name);
+    addAndMakeVisible (&button);
+    
+    name.setText (parameter->getName (1000), dontSendNotification);
+    name.setJustificationType (Justification::centred);
+}
+
+void Switch::resized()
+{
+    Rectangle<int> r = getLocalBounds();
+    
+    name.setBounds (r.removeFromTop (20));
+    r.removeFromBottom (20);
+    button.setBounds (r);
 }

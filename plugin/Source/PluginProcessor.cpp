@@ -27,9 +27,9 @@ RP2A03AudioProcessor::RP2A03AudioProcessor()
     addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
     addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "", 0.0f, 1.0f,  0.0f, 0.0f));
     addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
-    addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "", 0.0f, 1.0f,  1.0f, 0.0f));
     addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "", 0.0f, 1.0f,  0.0f, 0.0f));
     addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "", 0.0f, 1.0f,  1.0f, 0.0f));
+    addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "", 0.0f, 1.0f,  1.0f, 0.0f));
     addPluginParameter (new slParameter (paramOutput,          "Output",             "", 0.0f, 1.0f,  0.0f, 1.0f));
 }
 
@@ -99,13 +99,13 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             noteQueue.add (msg.getNoteNumber());
             velocity = msg.getVelocity();
             
-            printf ("Note on: %d\n", msg.getNoteNumber());
+            printf ("Note on: %d %d\n", msg.getNoteNumber(), msg.getVelocity());
         }
         else if (msg.isNoteOff())
         {
             noteQueue.removeFirstMatchingValue (msg.getNoteNumber());
             
-            printf ("Note off: %d\n", msg.getNoteNumber());
+            printf ("Note off: %d %d\n", msg.getNoteNumber(), msg.getVelocity());
         }
         else if (msg.isAllNotesOff())
         {

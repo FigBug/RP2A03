@@ -5,12 +5,46 @@
 #include "slParameter.h"
 
 //==============================================================================
+class PluginButton : public TextButton,
+                     private slParameter::Listener
+{
+public:
+    PluginButton (slParameter* parameter_)
+      : parameter (parameter_)
+    {
+        setButtonText (parameter->getUserValueText());
+        parameter->addListener (this);
+    }
+    
+    ~PluginButton()
+    {
+        parameter->removeListener (this);
+    }
+    
+    void parameterChanged (slParameter*) override
+    {
+        setToggleState (parameter->getUserValue() > 0.0f, dontSendNotification);
+        setButtonText (parameter->getUserValueText());
+    }
+
+    void clicked() override
+    {
+        parameter->beginUserAction();
+        parameter->setUserValue (parameter->getUserValue() > 0.0f ? 0.0f : 1.0f);
+        parameter->endUserAction();
+        setButtonText (parameter->getUserValueText());
+    }
+    
+    slParameter* parameter;
+};
+//==============================================================================
 class PluginSlider : public Slider,
                      private Slider::Listener,
                      private slParameter::Listener
 {
 public:
-    PluginSlider (slParameter* parameter_, SliderStyle style, TextEntryBoxPosition textBoxPosition) : Slider (style, textBoxPosition), parameter (parameter_)
+    PluginSlider (slParameter* parameter_, SliderStyle style, TextEntryBoxPosition textBoxPosition)
+      : Slider (style, textBoxPosition), parameter (parameter_)
     {
         addListener (this);
         setRange (parameter->getUserRangeStart(), parameter->getUseRangeEnd());
@@ -88,6 +122,11 @@ class ParamComponent : public Component
 {
 public:
     ParamComponent (slParameter* parameter);
+    
+    String getUid() { return parameter->getUid(); }
+    
+private:
+    slParameter* parameter;
 };
 
 //==============================================================================
@@ -102,4 +141,16 @@ private:
     Label name;
     Readout value;
     PluginSlider knob;
+};
+//==============================================================================
+class Switch : public ParamComponent
+{
+public:
+    Switch (slParameter* parameter);
+    
+private:
+    void resized() override;
+    
+    Label name;
+    PluginButton button;
 };

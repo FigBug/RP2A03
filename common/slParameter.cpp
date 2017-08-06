@@ -12,6 +12,11 @@ slParameter::slParameter (String uid_, String name_, String label_, float minVal
     range = NormalisableRange<float> (minValue, maxValue, intervalValue, skewFactor);
 }
 
+bool slParameter::isOnOff()
+{
+    return range.end == range.interval;
+}
+
 float slParameter::getUserValue() const
 {
     return jlimit (range.start, range.end, value);

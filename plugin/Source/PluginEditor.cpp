@@ -13,21 +13,21 @@
 
 //==============================================================================
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
-    : slAudioProcessorEditor (&p), processor (p)
+    : slAudioProcessorEditor (p), processor (p)
 {
     for (slParameter* pp : p.getPluginParameters())
     {
-        Knob* k = new Knob (pp);
+        ParamComponent* c = pp->isOnOff() ? (ParamComponent*)new Switch (pp) : (ParamComponent*)new Knob (pp);
         
-        addAndMakeVisible (k);
-        controls.add (k);
+        addAndMakeVisible (c);
+        controls.add (c);
     }
     
     addAndMakeVisible (&scope);
     
-    setSize (600, 350);
+    setSize (cx * 6, cy * 2);
     
-    scope.setNumSamplesPerPixel (10);
+    scope.setNumSamplesPerPixel (2);
     scope.setVerticalZoomFactor (3.0f);
 }
 
@@ -38,15 +38,20 @@ RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
 //==============================================================================
 void RP2A03AudioProcessorEditor::resized()
 {
+    using AP = RP2A03AudioProcessor;
+    
     slAudioProcessorEditor::resized();
     
-    Rectangle<int> r = getControlsArea().removeFromTop (150);
+    Rectangle<int> r = getControlsArea();
     
-    int w = r.getWidth() / controls.size();
-    
-    for (auto c : controls)
-        c->setBounds (r.removeFromLeft (w));
-    
-    r = getControlsArea().removeFromBottom (130);
-    scope.setBounds (r);
+    componentForId (AP::paramPulse1Level)->setBounds (getGridArea (0, 0));
+    componentForId (AP::paramPulse1DutyCycle)->setBounds (getGridArea (0, 1));
+    componentForId (AP::paramPulse2Level)->setBounds (getGridArea (1, 0));
+    componentForId (AP::paramPulse2DutyCycle)->setBounds (getGridArea (1, 1));
+    componentForId (AP::paramNoiseLevel)->setBounds (getGridArea (4, 0));
+    componentForId (AP::paramNoiseShort)->setBounds (getGridArea (4, 1));
+    componentForId (AP::paramTriangleLevel)->setBounds (getGridArea (5, 0));
+    componentForId (AP::paramOutput)->setBounds (getGridArea (5, 1));
+
+    scope.setBounds (getGridArea (2, 0, 2, 2));
 }

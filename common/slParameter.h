@@ -20,6 +20,8 @@ public:
     void setUserValueAsUserAction(float f);
     String getUserValueText() const;
     
+    bool isOnOff();
+    
     //==============================================================================
     void beginUserAction();
     void beginUserTimedAction();
