@@ -62,7 +62,7 @@ RP2A03AudioProcessor::~RP2A03AudioProcessor()
 }
 
 //==============================================================================
-void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int)
 {
     apu.sample_rate (long (sampleRate));
     apu.write_register (0x4015, 0x0F);
