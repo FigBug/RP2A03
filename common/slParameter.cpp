@@ -1,13 +1,17 @@
 #include "slParameter.h"
 #include "slUtil.h"
 
-slParameter::slParameter (String uid_, String name_, String label_, float minValue, float maxValue, float intervalValue, float defaultValue_, float skewFactor_)
+slParameter::slParameter (String uid_, String name_, String shortName_, String label_, float minValue, float maxValue,
+                          float intervalValue, float defaultValue_, float skewFactor_,
+                          std::function<String (const slParameter&)> textFunction_)
   : value (defaultValue_),
     defaultValue (defaultValue_),
     skewFactor (skewFactor_),
     uid (uid_),
     name (name_),
-    label (label_)
+    shortName (shortName_),
+    label (label_),
+    textFunction (textFunction_)
 {
     range = NormalisableRange<float> (minValue, maxValue, intervalValue, skewFactor);
 }
@@ -59,6 +63,8 @@ void slParameter::setUserValueAsUserAction (float f)
 
 String slParameter::getUserValueText() const
 {
+    if (textFunction)
+        return textFunction (*this);
     return getText (getValue(), 1000);
 }
 
@@ -144,6 +150,11 @@ float slParameter::getDefaultValue() const
 String slParameter::getName (int maximumStringLength) const
 {
     return name.substring (0, maximumStringLength);
+}
+
+String slParameter::getShortName() const
+{
+    return shortName;
 }
 
 String slParameter::getLabel() const

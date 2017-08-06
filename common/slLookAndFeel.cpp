@@ -11,6 +11,8 @@ slLookAndFeel::slLookAndFeel()
     setColour (TextButton::buttonOnColourId, Colours::white);
     setColour (TextButton::textColourOffId, Colours::white);
     setColour (TextButton::textColourOnId, Colours::black);
+    
+    Desktop::getInstance().getDefaultLookAndFeel().setDefaultSansSerifTypefaceName ("Geneva");
 }
 
 void slLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, int height, float sliderPos,
@@ -46,7 +48,7 @@ void slLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, int 
             g.fillPath (filledArc);
         }
         
-   }
+    }
     else
     {
         if (slider.isEnabled())

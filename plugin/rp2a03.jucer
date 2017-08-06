@@ -13,6 +13,9 @@
               splashScreenColour="Dark" buildStandalone="0" enableIAA="0">
   <MAINGROUP id="dPRjsF" name="RP2A03">
     <GROUP id="{EE796482-0D02-0052-80F4-B1FE6CE0D41A}" name="Source">
+      <GROUP id="{1152B116-4DDF-40B2-E59A-469FEBCF5C64}" name="Resources">
+        <FILE id="oVLZdc" name="logo.png" compile="0" resource="1" file="Resources/logo.png"/>
+      </GROUP>
       <GROUP id="{6F2315D7-3D20-892D-4519-7653440048F1}" name="APU">
         <GROUP id="{47267D70-E942-E487-A052-138332AE48D3}" name="boost">
           <FILE id="u7B77t" name="config.hpp" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/boost/config.hpp"/>

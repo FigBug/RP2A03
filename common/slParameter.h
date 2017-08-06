@@ -8,7 +8,9 @@ class slParameter : public AudioProcessorParameter,
                     private AsyncUpdater
 {
 public:
-    slParameter (String uid, String name, String label, float minValue, float maxValue, float intervalValue, float defaultValue, float skewFactor = 1.0f);
+    slParameter (String uid, String name, String shortName, String label, float minValue, float maxValue,
+                 float intervalValue, float defaultValue, float skewFactor = 1.0f,
+                 std::function<String (const slParameter&)> textFunction = nullptr);
     
     String getUid() { return uid; }
 
@@ -59,6 +61,7 @@ public:
     float getDefaultValue() const override;
     
     String getName (int maximumStringLength) const override;
+    String getShortName() const;
     String getLabel() const override;
     
     int getNumSteps() const override;
@@ -85,7 +88,10 @@ protected:
     
     String uid;
     String name;
+    String shortName;
     String label;
+    
+    std::function<String (const slParameter&)> textFunction;
     
     int userActionCount {0};
     

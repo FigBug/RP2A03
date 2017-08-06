@@ -26,10 +26,12 @@ public:
 
     //==============================================================================
     void resized() override;
+    void paint (Graphics& g) override;
 
     RP2A03AudioProcessor& processor;
     
     drow::TriggeredScope scope;
+    Image logo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RP2A03AudioProcessorEditor)
 };

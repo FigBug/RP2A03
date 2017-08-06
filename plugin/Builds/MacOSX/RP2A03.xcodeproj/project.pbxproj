@@ -45,6 +45,7 @@
 		7D58C470E37AD79BC076B9C4 = {isa = PBXBuildFile; fileRef = 84FA67B43A5CB75B5A915639; };
 		E30E3E7C5064E5712DDFFE4F = {isa = PBXBuildFile; fileRef = 6A7F6E9D5B8523929D60CF43; };
 		07CB1B7FFC4D7A00C8FB47B3 = {isa = PBXBuildFile; fileRef = F6FE56B1A3B22D8D848B30A0; };
+		C48B954A55656BC3F1F3D0F7 = {isa = PBXBuildFile; fileRef = 6482109E88556CB004DB1D50; };
 		7BD09B5FC151D1BD34A4912E = {isa = PBXBuildFile; fileRef = 83B5F2744BF9D792331698D9; };
 		B07AA801E696D7D54B87F0CE = {isa = PBXBuildFile; fileRef = D8292D3DE6FFAE5002B9985B; };
 		7BCC3E36748393F3718BC0B5 = {isa = PBXBuildFile; fileRef = 34B7A8E3C5B15E9274C2686B; };
@@ -90,31 +91,34 @@
 		34B7A8E3C5B15E9274C2686B = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_devices.mm"; path = "../../JuceLibraryCode/include_juce_audio_devices.mm"; sourceTree = "SOURCE_ROOT"; };
 		367B1BB4EFD80367F1465ED5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_video.mm"; path = "../../JuceLibraryCode/include_juce_video.mm"; sourceTree = "SOURCE_ROOT"; };
 		3A01A9623731DF7015765E88 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_processors.mm"; path = "../../JuceLibraryCode/include_juce_audio_processors.mm"; sourceTree = "SOURCE_ROOT"; };
+		3CB6C841FD05C2E7C0307DD9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = "SOURCE_ROOT"; };
 		3E09ACE0EA85DC5E42165244 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "include_juce_audio_plugin_client_VST2.cpp"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp"; sourceTree = "SOURCE_ROOT"; };
 		4431DADE9D9A4FCBBB59C1C4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_plugin_client_AU_2.mm"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU_2.mm"; sourceTree = "SOURCE_ROOT"; };
 		45B8EA56250A8BED8629F917 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Simple_Apu.h"; path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/Simple_Apu.h"; sourceTree = "SOURCE_ROOT"; };
 		4DAF6BB6F03770A913F64CE3 = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = "SOURCE_ROOT"; };
 		507FB8B639D699E042A1915E = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_basics"; path = "../../../../JUCE/modules/juce_audio_basics"; sourceTree = "SOURCE_ROOT"; };
+		53D9EE7F648CD1E2BD17FECF = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../Resources/logo.png; sourceTree = "SOURCE_ROOT"; };
 		5461BFB0005866673D4FBEAD = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = slLookAndFeel.h; path = ../../../common/slLookAndFeel.h; sourceTree = "SOURCE_ROOT"; };
 		593553F7A51CA539C885CA92 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.hpp; path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/boost/config.hpp"; sourceTree = "SOURCE_ROOT"; };
 		5945301A1FC2B6C69803230D = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = slProcessor.h; path = ../../../common/slProcessor.h; sourceTree = "SOURCE_ROOT"; };
 		5996B1F8134E2455781D819F = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = slProgram.cpp; path = ../../../common/slProgram.cpp; sourceTree = "SOURCE_ROOT"; };
 		5E97800FC099791FEB67B8F9 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		63C92CE44F93D171DE34C092 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST.plist"; path = "Info-VST.plist"; sourceTree = "SOURCE_ROOT"; };
+		6482109E88556CB004DB1D50 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = "SOURCE_ROOT"; };
 		65CB07BC8F3C1D151305E8FA = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		65E390DE3E86ED7A52B6787A = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = slUtil.h; path = ../../../common/slUtil.h; sourceTree = "SOURCE_ROOT"; };
 		663C38F99B7525C656874BD6 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = slProcessor.cpp; path = ../../../common/slProcessor.cpp; sourceTree = "SOURCE_ROOT"; };
-		6A7F6E9D5B8523929D60CF43 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginProcessor.cpp; path = ../../Source/PluginProcessor.cpp; sourceTree = "SOURCE_ROOT"; };
 		720B69A41B5D6BB501B189E5 = {isa = PBXFileReference; lastKnownFileType = file; name = dRowAudio; path = ../../../modules/drowaudio/module/dRowAudio; sourceTree = "SOURCE_ROOT"; };
-		750B7542986BC81BD864A579 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cstdint.hpp; path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/boost/cstdint.hpp"; sourceTree = "SOURCE_ROOT"; };
 		800E65D578464DBAEDDC2532 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E9A43D0E971690239E9BB476 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RP2A03.vst; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		92625EFC69DCF497950C9A68 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RP2A03.component; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		13A5BC81ECA4319407BC2DDF = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRP2A03.a; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		36E20C50B600CB2668791F62 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		64B699EEFEE6E3D92D5AEDEC = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6A7F6E9D5B8523929D60CF43 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginProcessor.cpp; path = ../../Source/PluginProcessor.cpp; sourceTree = "SOURCE_ROOT"; };
 		70851E610E930E7ADAFA3AEA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = slCommon.h; path = ../../../common/slCommon.h; sourceTree = "SOURCE_ROOT"; };
 		74E7E764B3E3E82B66E023F8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = "SOURCE_ROOT"; };
+		750B7542986BC81BD864A579 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cstdint.hpp; path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/boost/cstdint.hpp"; sourceTree = "SOURCE_ROOT"; };
 		75CB0387969CB8211894A90A = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_processors"; path = "../../../../JUCE/modules/juce_audio_processors"; sourceTree = "SOURCE_ROOT"; };
 		7964FB8FC5B09DDDE1B9E571 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Nes_Vrc6.h"; path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Nes_Vrc6.h"; sourceTree = "SOURCE_ROOT"; };
 		7A291E95F6B851B08762D46C = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_cryptography"; path = "../../../../JUCE/modules/juce_cryptography"; sourceTree = "SOURCE_ROOT"; };
@@ -173,6 +177,8 @@
 		F8CFFF2E710F0FFE50633A3F = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = slDsp.cpp; path = ../../../common/slDsp.cpp; sourceTree = "SOURCE_ROOT"; };
 		FA2BA138C830332AD6F0D577 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_video"; path = "../../../../JUCE/modules/juce_video"; sourceTree = "SOURCE_ROOT"; };
 		FFC48252D6BE8541F5B580AA = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CF3C69A64D7E9EC1ECE37A12 = {isa = PBXGroup; children = (
+					53D9EE7F648CD1E2BD17FECF, ); name = Resources; sourceTree = "<group>"; };
 		3999D6E6E593410A6059ECF0 = {isa = PBXGroup; children = (
 					593553F7A51CA539C885CA92,
 					750B7542986BC81BD864A579,
@@ -221,6 +227,7 @@
 					84FA67B43A5CB75B5A915639,
 					65E390DE3E86ED7A52B6787A, ); name = Common; sourceTree = "<group>"; };
 		306C5015CC6FACEEDDEFD975 = {isa = PBXGroup; children = (
+					CF3C69A64D7E9EC1ECE37A12,
 					E2E228424DB3D1B37B6E3F6B,
 					7486B7F1E817160AD26CD3A4,
 					6A7F6E9D5B8523929D60CF43,
@@ -248,6 +255,8 @@
 					FA2BA138C830332AD6F0D577, ); name = "Juce Modules"; sourceTree = "<group>"; };
 		B5F36CF3F169773C58D3B115 = {isa = PBXGroup; children = (
 					E36B238B1CDED40B3F6B3B26,
+					6482109E88556CB004DB1D50,
+					3CB6C841FD05C2E7C0307DD9,
 					83B5F2744BF9D792331698D9,
 					D8292D3DE6FFAE5002B9985B,
 					34B7A8E3C5B15E9274C2686B,
@@ -330,7 +339,7 @@
 					"JucePlugin_Build_Standalone=0", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/fft/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/filters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/audiothumbnail/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/filebrowser/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/maths/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/native/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/network/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/parameters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/streams/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/utility/*", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
@@ -368,7 +377,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/fft/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/filters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/audiothumbnail/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/filebrowser/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/maths/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/native/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/network/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/parameters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/streams/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/utility/*", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
@@ -405,7 +414,7 @@
 					"JucePlugin_Build_Standalone=0", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/fft/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/filters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/audiothumbnail/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/filebrowser/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/maths/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/native/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/network/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/parameters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/streams/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/utility/*", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-AU.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
@@ -444,7 +453,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/fft/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/filters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/audiothumbnail/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/filebrowser/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/maths/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/native/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/network/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/parameters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/streams/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/utility/*", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-AU.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
@@ -480,7 +489,7 @@
 					"JucePlugin_Build_Standalone=0",
 					"JUCE_SHARED_CODE=1", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/fft/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/filters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/audiothumbnail/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/filebrowser/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/maths/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/native/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/network/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/parameters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/streams/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/utility/*", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -512,7 +521,7 @@
 					"JUCE_SHARED_CODE=1", );
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/fft/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/audio/filters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/audiothumbnail/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/gui/filebrowser/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/maths/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/native/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/network/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/parameters/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/streams/*", "../../../modules/drowaudio/module/dRowAudio/drowaudio/utility/*", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../modules/drowaudio/module", "../../../../JUCE/modules", "../../../3rdparty/Nes_Snd_Emu-0.1.7", "../../../Common", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -648,6 +657,7 @@
 					7D58C470E37AD79BC076B9C4,
 					E30E3E7C5064E5712DDFFE4F,
 					07CB1B7FFC4D7A00C8FB47B3,
+					C48B954A55656BC3F1F3D0F7,
 					7BD09B5FC151D1BD34A4912E,
 					B07AA801E696D7D54B87F0CE,
 					7BCC3E36748393F3718BC0B5,

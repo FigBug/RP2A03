@@ -46,18 +46,20 @@ Knob::Knob (slParameter* parameter)
  
     knob.setSkewFactor (parameter->getSkew());
     
-    name.setText (parameter->getName (1000), dontSendNotification);
-    value.setJustificationType (Justification::centred);
-    name.setJustificationType (Justification::centred);
+    name.setText (parameter->getShortName(), dontSendNotification);
+    value.setJustificationType (Justification::centredTop);
+    name.setJustificationType (Justification::centredBottom);
+    
+    value.setFont (value.getFont().withHeight (15.0));
 }
 
 void Knob::resized()
 {
-    Rectangle<int> r = getLocalBounds();
+    Rectangle<int> r = getLocalBounds().reduced (4);
     
     name.setBounds (r.removeFromTop (20));
     value.setBounds (r.removeFromBottom (20));
-    knob.setBounds (r);
+    knob.setBounds (r.reduced (2));
 }
 //==============================================================================
 Switch::Switch (slParameter* parameter)
@@ -67,15 +69,14 @@ Switch::Switch (slParameter* parameter)
     addAndMakeVisible (&name);
     addAndMakeVisible (&button);
     
-    name.setText (parameter->getName (1000), dontSendNotification);
+    name.setText (parameter->getShortName(), dontSendNotification);
     name.setJustificationType (Justification::centred);
 }
 
 void Switch::resized()
 {
-    Rectangle<int> r = getLocalBounds();
+    Rectangle<int> r = getLocalBounds().withSizeKeepingCentre (getWidth() - 10, 20);
     
-    name.setBounds (r.removeFromTop (20));
-    r.removeFromBottom (20);
     button.setBounds (r);
+    name.setBounds (r.translated (0, -20));
 }

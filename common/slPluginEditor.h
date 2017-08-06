@@ -19,9 +19,13 @@ protected:
     void resized() override;
     
     Rectangle<int> getGridArea (int x, int y, int w = 1, int h = 1);
+    void setGridSize (int x, int y);
     
     const int cx;
     const int cy;
+    
+    int headerHeight = 50;
+    int inset = 4;
     
     OwnedArray<ParamComponent> controls;
 

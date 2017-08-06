@@ -21,16 +21,40 @@ const char* RP2A03AudioProcessor::paramNoiseShort       = "noisePeriod";
 const char* RP2A03AudioProcessor::paramOutput           = "output";
 
 //==============================================================================
+String percentTextFunction (const slParameter& p)
+{
+    return String::formatted("%.0f%%", p.getUserValue() * 100);
+}
+
+String onOffTextFunction (const slParameter& p)
+{
+    return p.getUserValue() > 0.0f ? "On" : "Off";
+}
+
+String dutyTextFunction (const slParameter& p)
+{
+    const int duty = p.getUserValue();
+    switch (duty)
+    {
+        case 0: return "12.5%";
+        case 1: return "25%";
+        case 2: return "50%";
+        case 3: return "75%";
+    }
+    return "";
+}
+
+//==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
-    addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "", 0.0f, 1.0f,  0.0f, 1.0f));
-    addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
-    addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "", 0.0f, 1.0f,  0.0f, 0.0f));
-    addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "", 0.0f, 3.0f,  1.0f, 0.0f));
-    addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "", 0.0f, 1.0f,  0.0f, 0.0f));
-    addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "", 0.0f, 1.0f,  1.0f, 0.0f));
-    addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "", 0.0f, 1.0f,  1.0f, 0.0f));
-    addPluginParameter (new slParameter (paramOutput,          "Output",             "", 0.0f, 1.0f,  0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "Pulse 1",     "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
+    addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "Pulse 2",     "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
+    addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "Noise",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "Short",       "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
+    addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
+    addPluginParameter (new slParameter (paramOutput,          "Output",             "Output",      "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -98,20 +122,14 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
         {
             noteQueue.add (msg.getNoteNumber());
             velocity = msg.getVelocity();
-            
-            printf ("Note on: %d %d\n", msg.getNoteNumber(), msg.getVelocity());
         }
         else if (msg.isNoteOff())
         {
             noteQueue.removeFirstMatchingValue (msg.getNoteNumber());
-            
-            printf ("Note off: %d %d\n", msg.getNoteNumber(), msg.getVelocity());
         }
         else if (msg.isAllNotesOff())
         {
             noteQueue.clear();
-            
-            printf ("All notes off\n");
         }
         
         const int curNote = noteQueue.size() > 0 ? noteQueue.getFirst() : -1;

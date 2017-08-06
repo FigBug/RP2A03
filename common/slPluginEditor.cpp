@@ -26,7 +26,7 @@ Rectangle<int> slAudioProcessorEditor::getControlsArea()
 
 Rectangle<int> slAudioProcessorEditor::getGridArea (int x, int y, int w, int h)
 {
-    return Rectangle<int> (x * cx, y * cy, w * cx, h * cy);
+    return Rectangle<int> (inset + x * cx, headerHeight + y * cy + inset, w * cx, h * cy);
 }
 
 ParamComponent* slAudioProcessorEditor::componentForId (const String& uid)
@@ -37,4 +37,9 @@ ParamComponent* slAudioProcessorEditor::componentForId (const String& uid)
             return c;
     }
     return nullptr;
+}
+
+void slAudioProcessorEditor::setGridSize (int x, int y)
+{
+    setSize (x * cx + inset * 2, y * cy + inset * 2 + headerHeight);
 }
