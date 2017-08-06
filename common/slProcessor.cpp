@@ -218,12 +218,12 @@ void slProcessor::getStateInformation (MemoryBlock& destData)
     {
         if (! p->isMetaParameter())
         {
-            slParameter::ParamState state = p->getState();
+            slParameter::ParamState pstate = p->getState();
             
             XmlElement* paramE = new XmlElement ("param");
             
-            paramE->setAttribute("uid", state.uid);
-            paramE->setAttribute("val", state.value);
+            paramE->setAttribute("uid", pstate.uid);
+            paramE->setAttribute("val", pstate.value);
             
             rootE->addChildElement (paramE);
         }

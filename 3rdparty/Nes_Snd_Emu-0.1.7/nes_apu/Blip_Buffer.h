@@ -7,7 +7,9 @@
 #ifndef BLIP_BUFFER_H
 #define BLIP_BUFFER_H
 
+#if __clang__
 #pragma clang diagnostic ignored "-Wunused-value"
+#endif
 
 #include "blargg_common.h"
 

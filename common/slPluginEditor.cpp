@@ -8,15 +8,11 @@ slAudioProcessorEditor::slAudioProcessorEditor (slProcessor& p, int cx_, int cy_
 
 void slAudioProcessorEditor::paint (Graphics& g)
 {
-    if (slLookAndFeel* lf = dynamic_cast<slLookAndFeel*> (&getLookAndFeel()))
-    {
-        g.fillAll (Colours::black);
-    }
+    g.fillAll (Colours::black);
 }
 
 void slAudioProcessorEditor::resized()
-{
-    
+{    
 }
 
 Rectangle<int> slAudioProcessorEditor::getControlsArea()

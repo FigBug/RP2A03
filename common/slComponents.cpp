@@ -23,7 +23,7 @@ Readout::~Readout()
     parameter->removeListener (this);
 }
 
-void Readout::parameterChanged (slParameter *source)
+void Readout::parameterChanged (slParameter*)
 {
     setText (parameter->getUserValueText(), dontSendNotification);
 }

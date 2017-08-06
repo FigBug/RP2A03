@@ -66,8 +66,8 @@ void slLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, int 
     }
 }
 
-void slLookAndFeel::drawButtonBackground (Graphics& g, Button& b, const Colour& backgroundColour,
-                                          bool isMouseOverButton, bool isButtonDown)
+void slLookAndFeel::drawButtonBackground (Graphics& g, Button& b, const Colour&,
+                                          bool, bool)
 {
     g.setColour (b.findColour (TextButton::buttonOnColourId));
     if (b.getToggleState())
@@ -76,7 +76,7 @@ void slLookAndFeel::drawButtonBackground (Graphics& g, Button& b, const Colour& 
         g.drawRect (b.getLocalBounds());
 }
 
-void slLookAndFeel::drawButtonText (Graphics& g, TextButton& b, bool isMouseOverButton, bool isButtonDown)
+void slLookAndFeel::drawButtonText (Graphics& g, TextButton& b, bool, bool)
 {
     g.setFont (getTextButtonFont (b, b.getHeight()));
     

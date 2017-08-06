@@ -33,7 +33,7 @@ String onOffTextFunction (const slParameter& p)
 
 String dutyTextFunction (const slParameter& p)
 {
-    const int duty = p.getUserValue();
+    const int duty = int (p.getUserValue());
     switch (duty)
     {
         case 0: return "12.5%";
@@ -64,7 +64,7 @@ RP2A03AudioProcessor::~RP2A03AudioProcessor()
 //==============================================================================
 void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    apu.sample_rate (sampleRate);
+    apu.sample_rate (long (sampleRate));
     apu.write_register (0x4015, 0x0F);
     
     outputSmoothed.reset (sampleRate, 0.05);
@@ -99,12 +99,12 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
 void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midi)
 {
     const float p1Level = getParameter (paramPulse1Level)->getUserValue();
-    const int p1Duty    = getParameter (paramPulse1DutyCycle)->getUserValue();
+    const int p1Duty    = (int) getParameter (paramPulse1DutyCycle)->getUserValue();
     const float p2Level = getParameter (paramPulse2Level)->getUserValue();
-    const int p2Duty    = getParameter (paramPulse2DutyCycle)->getUserValue();
+    const int p2Duty    = (int) getParameter (paramPulse2DutyCycle)->getUserValue();
     const float tLevel  = getParameter (paramTriangleLevel)->getUserValue();
     const float nLevel  = getParameter (paramNoiseLevel)->getUserValue();
-    const bool nShort   = getParameter (paramNoiseShort)->getUserValue();
+    const bool nShort   = getParameter (paramNoiseShort)->getUserValue() > 0.0f;
     
     outputSmoothed.setValue (getParameter (paramOutput)->getUserValue());
 
@@ -143,7 +143,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             
             if (curNote != -1)
             {
-                int period = 111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1;
+                int period = int (111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1);
                 
                 apu.write_register (0x4002, period & 0xFF);
                 apu.write_register (0x4003, (period >> 8) & 0x7);
@@ -154,7 +154,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             
             if (curNote != -1)
             {
-                int period = 111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1;
+                int period = int (111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1);
                 
                 apu.write_register (0x4006, period & 0xFF);
                 apu.write_register (0x4007, (period >> 8) & 0x7);
@@ -164,7 +164,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             apu.write_register (0x4008, curNote == -1 ? 0x00 : 0xFF);
             if (curNote != -1)
             {
-                int period = tLevel == 1.0f ? 111860.8 / (MidiMessage::getMidiNoteInHertz (curNote) * 2) - 1 : 0;
+                int period = int (tLevel == 1.0f ? 111860.8 / MidiMessage::getMidiNoteInHertz (curNote) * 2 - 1 : 0);
                 
                 apu.write_register (0x400A, period & 0xFF);
                 apu.write_register (0x400B, (period >> 8) & 0x7);

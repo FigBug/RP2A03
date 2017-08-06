@@ -6,7 +6,9 @@
 #ifndef NES_APU_H
 #define NES_APU_H
 
+#if __clang__
 #pragma clang diagnostic ignored "-Wunused-value"
+#endif
 
 typedef long     cpu_time_t; // CPU clock cycle count
 typedef unsigned cpu_addr_t; // 16-bit memory address
