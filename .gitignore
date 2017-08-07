@@ -37,3 +37,4 @@ Release
 *.suo
 *.db
 *.opendb
+*.xcuserstate

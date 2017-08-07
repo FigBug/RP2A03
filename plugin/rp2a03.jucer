@@ -87,10 +87,11 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-Wunused-value">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="RP2A03"
-                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"/>
+                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
+                       osxCompatibility="10.9 SDK"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="RP2A03"
                        headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       osxArchitecture="64BitUniversal"/>
+                       osxArchitecture="64BitUniversal" osxCompatibility="10.9 SDK"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
