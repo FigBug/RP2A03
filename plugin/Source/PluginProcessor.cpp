@@ -21,19 +21,19 @@ const char* RP2A03AudioProcessor::paramNoiseShort       = "noisePeriod";
 const char* RP2A03AudioProcessor::paramOutput           = "output";
 
 //==============================================================================
-String percentTextFunction (const slParameter& p)
+String percentTextFunction (const slParameter& p, float v)
 {
-    return String::formatted("%.0f%%", p.getUserValue() * 100);
+    return String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
 }
 
-String onOffTextFunction (const slParameter& p)
+String onOffTextFunction (const slParameter& p, float v)
 {
-    return p.getUserValue() > 0.0f ? "On" : "Off";
+    return v > 0.0f ? "On" : "Off";
 }
 
-String dutyTextFunction (const slParameter& p)
+String dutyTextFunction (const slParameter& p, float v)
 {
-    const int duty = int (p.getUserValue());
+    const int duty = int (v);
     switch (duty)
     {
         case 0: return "12.5%";
