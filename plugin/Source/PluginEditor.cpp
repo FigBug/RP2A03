@@ -16,6 +16,8 @@
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     : slAudioProcessorEditor (p, 80, 100), processor (p)
 {
+    additionalProgramming = "Shay Green";
+    
     using AP = RP2A03AudioProcessor;
     
     logo = ImageFileFormat::loadFrom (BinaryData::logo_png, BinaryData::logo_pngSize);
@@ -59,11 +61,7 @@ RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
 void RP2A03AudioProcessorEditor::paint (Graphics& g)
 {
     slAudioProcessorEditor::paint (g);
-    
-    g.setFont (Font (15.0f));
-    g.setColour (Colours::white);
-    g.drawText("Ver: " JucePlugin_VersionString, getLocalBounds().reduced (4), Justification::topRight);
-    
+        
     g.drawImageAt (logo, getWidth() / 2 - logo.getWidth() / 2, 0);
 }
 
