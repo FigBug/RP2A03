@@ -38,3 +38,4 @@ Release
 *.db
 *.opendb
 *.xcuserstate
+*.xcscheme

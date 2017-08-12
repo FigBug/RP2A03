@@ -46,6 +46,12 @@ public:
     static const char* paramNoiseLevel;
     static const char* paramNoiseShort;
     static const char* paramOutput;
+    static const char* paramPulse1Tune;
+    static const char* paramPulse1TuneFine;
+    static const char* paramPulse2Tune;
+    static const char* paramPulse2TuneFine;
+    static const char* paramTriangleTune;
+    static const char* paramTriangleTuneFine;
 
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
