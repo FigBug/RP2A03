@@ -39,3 +39,5 @@ Release64
 *.suo
 *.db
 *.opendb
+*.xcuserstate
+*.xcscheme
