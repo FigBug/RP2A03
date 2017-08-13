@@ -150,7 +150,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             noteQueue.clear();
         }
         
-        const int curNote = noteQueue.size() > 0 ? noteQueue.getFirst() : -1;
+        const int curNote = noteQueue.size() > 0 ? noteQueue.getLast() : -1;
         
         if (curNote != lastNote)
         {
