@@ -19,21 +19,27 @@ const char* RP2A03AudioProcessor::paramTriangleLevel    = "triangleLevel";
 const char* RP2A03AudioProcessor::paramNoiseLevel       = "noiseLevel";
 const char* RP2A03AudioProcessor::paramNoiseShort       = "noisePeriod";
 const char* RP2A03AudioProcessor::paramOutput           = "output";
+const char* RP2A03AudioProcessor::paramPulse1Tune       = "pulse1Tune";
+const char* RP2A03AudioProcessor::paramPulse1TuneFine   = "pulse1TuneFine";
+const char* RP2A03AudioProcessor::paramPulse2Tune       = "pulse2Tune";
+const char* RP2A03AudioProcessor::paramPulse2TuneFine   = "pulse2TuneFine";
+const char* RP2A03AudioProcessor::paramTriangleTune     = "triangleTune";
+const char* RP2A03AudioProcessor::paramTriangleTuneFine = "triangleTuneFine";
 
 //==============================================================================
-String percentTextFunction (const slParameter& p)
+String percentTextFunction (const slParameter& p, float v)
 {
-    return String::formatted("%.0f%%", p.getUserValue() * 100);
+    return String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
 }
 
-String onOffTextFunction (const slParameter& p)
+String onOffTextFunction (const slParameter& p, float v)
 {
-    return p.getUserValue() > 0.0f ? "On" : "Off";
+    return v > 0.0f ? "On" : "Off";
 }
 
-String dutyTextFunction (const slParameter& p)
+String dutyTextFunction (const slParameter& p, float v)
 {
-    const int duty = int (p.getUserValue());
+    const int duty = int (v);
     switch (duty)
     {
         case 0: return "12.5%";
@@ -47,14 +53,20 @@ String dutyTextFunction (const slParameter& p)
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
-    addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "Pulse 1",     "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
     addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
-    addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "Pulse 2",     "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
     addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
     addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "Noise",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
     addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "Short",       "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
     addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
     addPluginParameter (new slParameter (paramOutput,          "Output",             "Output",      "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new slParameter (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramTriangleTune,    "Triangle Tune",      "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f));
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -62,7 +74,7 @@ RP2A03AudioProcessor::~RP2A03AudioProcessor()
 }
 
 //==============================================================================
-void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void RP2A03AudioProcessor::prepareToPlay (double sampleRate, int)
 {
     apu.sample_rate (long (sampleRate));
     apu.write_register (0x4015, 0x0F);
@@ -98,13 +110,19 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
 
 void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midi)
 {
-    const float p1Level = getParameter (paramPulse1Level)->getUserValue();
-    const int p1Duty    = (int) getParameter (paramPulse1DutyCycle)->getUserValue();
-    const float p2Level = getParameter (paramPulse2Level)->getUserValue();
-    const int p2Duty    = (int) getParameter (paramPulse2DutyCycle)->getUserValue();
-    const float tLevel  = getParameter (paramTriangleLevel)->getUserValue();
-    const float nLevel  = getParameter (paramNoiseLevel)->getUserValue();
-    const bool nShort   = getParameter (paramNoiseShort)->getUserValue() > 0.0f;
+    const float p1Level = parameterValue (paramPulse1Level);
+    const int p1Duty    = parameterIntValue (paramPulse1DutyCycle);
+    const int p1Tune    = parameterIntValue (paramPulse1Tune);
+    const int p1Fine    = parameterIntValue (paramPulse1TuneFine);
+    const float p2Level = parameterValue (paramPulse2Level);
+    const int p2Duty    = parameterIntValue (paramPulse2DutyCycle);
+    const int p2Tune    = parameterIntValue (paramPulse2Tune);
+    const int p2Fine    = parameterIntValue (paramPulse2TuneFine);
+    const float tLevel  = parameterValue (paramTriangleLevel);
+    const int tTune     = parameterIntValue (paramTriangleTune);
+    const int tFine     = parameterIntValue (paramTriangleTuneFine);
+    const float nLevel  = parameterValue (paramNoiseLevel);
+    const bool nShort   = parameterValue (paramNoiseShort) > 0.0f;
     
     outputSmoothed.setValue (getParameter (paramOutput)->getUserValue());
 
@@ -132,7 +150,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             noteQueue.clear();
         }
         
-        const int curNote = noteQueue.size() > 0 ? noteQueue.getFirst() : -1;
+        const int curNote = noteQueue.size() > 0 ? noteQueue.getLast() : -1;
         
         if (curNote != lastNote)
         {
@@ -143,7 +161,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             
             if (curNote != -1)
             {
-                int period = int (111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1);
+                int period = int (111860.8 / getMidiNoteInHertz (curNote + p1Tune + p1Fine / 100.0) - 1);
                 
                 apu.write_register (0x4002, period & 0xFF);
                 apu.write_register (0x4003, (period >> 8) & 0x7);
@@ -154,7 +172,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             
             if (curNote != -1)
             {
-                int period = int (111860.8 / MidiMessage::getMidiNoteInHertz (curNote) - 1);
+                int period = int (111860.8 / getMidiNoteInHertz (curNote + p2Tune + p2Fine / 100.0) - 1);
                 
                 apu.write_register (0x4006, period & 0xFF);
                 apu.write_register (0x4007, (period >> 8) & 0x7);
@@ -164,7 +182,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             apu.write_register (0x4008, curNote == -1 ? 0x00 : 0xFF);
             if (curNote != -1)
             {
-                int period = int (tLevel == 1.0f ? 111860.8 / MidiMessage::getMidiNoteInHertz (curNote) * 2 - 1 : 0);
+                int period = int (tLevel == 1.0f ? 111860.8 / getMidiNoteInHertz (curNote + tTune + tFine / 100.0) * 2 - 1 : 0);
                 
                 apu.write_register (0x400A, period & 0xFF);
                 apu.write_register (0x400B, (period >> 8) & 0x7);
