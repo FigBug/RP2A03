@@ -27,12 +27,14 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
         auto uid = pp->getUid();
         ParamComponent* c;
         
-        if (uid == AP::paramPulse1Tune      ||
-            uid == AP::paramPulse1TuneFine  ||
-            uid == AP::paramPulse2Tune      ||
-            uid == AP::paramPulse2TuneFine  ||
-            uid == AP::paramTriangleTune    ||
-            uid == AP::paramTriangleTuneFine)
+        if (uid == AP::paramPulse1Tune       ||
+            uid == AP::paramPulse1TuneFine   ||
+            uid == AP::paramPulse2Tune       ||
+            uid == AP::paramPulse2TuneFine   ||
+            uid == AP::paramTriangleTune     ||
+            uid == AP::paramTriangleTuneFine ||
+            uid == AP::paramPulse1Sweep      ||
+            uid == AP::paramPulse2Sweep)
         {
             c = new Knob (pp, true);
         }
@@ -47,7 +49,7 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     addAndMakeVisible (&scope);
     
-    setGridSize (10, 2);
+    setGridSize (12, 2);
     
     scope.setNumSamplesPerPixel (2);
     scope.setVerticalZoomFactor (3.0f);
@@ -77,19 +79,23 @@ void RP2A03AudioProcessorEditor::resized()
     componentForId (AP::paramPulse1DutyCycle)->setBounds (getGridArea (1, 0));
     componentForId (AP::paramPulse1Tune)->setBounds (getGridArea (2, 0));
     componentForId (AP::paramPulse1TuneFine)->setBounds (getGridArea (3, 0));
+    componentForId (AP::paramPulse1Sweep)->setBounds (getGridArea (4, 0));
+    componentForId (AP::paramPulse1Shift)->setBounds (getGridArea (5, 0));
     
     componentForId (AP::paramPulse2Level)->setBounds (getGridArea (0, 1));
     componentForId (AP::paramPulse2DutyCycle)->setBounds (getGridArea (1, 1));
     componentForId (AP::paramPulse2Tune)->setBounds (getGridArea (2, 1));
     componentForId (AP::paramPulse2TuneFine)->setBounds (getGridArea (3, 1));
-    
-    componentForId (AP::paramTriangleLevel)->setBounds (getGridArea (7, 0));
-    componentForId (AP::paramTriangleTune)->setBounds (getGridArea (8, 0));
-    componentForId (AP::paramTriangleTuneFine)->setBounds (getGridArea (9, 0));
-    
-    componentForId (AP::paramNoiseLevel)->setBounds (getGridArea (7, 1));
-    componentForId (AP::paramNoiseShort)->setBounds (getGridArea (8, 1));
-    componentForId (AP::paramOutput)->setBounds (getGridArea (9, 1));
+    componentForId (AP::paramPulse2Sweep)->setBounds (getGridArea (4, 1));
+    componentForId (AP::paramPulse2Shift)->setBounds (getGridArea (5, 1));
 
-    scope.setBounds (getGridArea (4, 0, 3, 2).reduced (5));
+    componentForId (AP::paramTriangleLevel)->setBounds (getGridArea (9, 0));
+    componentForId (AP::paramTriangleTune)->setBounds (getGridArea (10, 0));
+    componentForId (AP::paramTriangleTuneFine)->setBounds (getGridArea (11, 0));
+    
+    componentForId (AP::paramNoiseLevel)->setBounds (getGridArea (9, 1));
+    componentForId (AP::paramNoiseShort)->setBounds (getGridArea (10, 1));
+    componentForId (AP::paramOutput)->setBounds (getGridArea (11, 1));
+
+    scope.setBounds (getGridArea (6, 0, 3, 2).reduced (5));
 }
