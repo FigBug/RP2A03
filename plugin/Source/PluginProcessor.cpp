@@ -25,6 +25,10 @@ const char* RP2A03AudioProcessor::paramPulse2Tune       = "pulse2Tune";
 const char* RP2A03AudioProcessor::paramPulse2TuneFine   = "pulse2TuneFine";
 const char* RP2A03AudioProcessor::paramTriangleTune     = "triangleTune";
 const char* RP2A03AudioProcessor::paramTriangleTuneFine = "triangleTuneFine";
+const char* RP2A03AudioProcessor::paramPulse1Sweep      = "pulse1Sweep";
+const char* RP2A03AudioProcessor::paramPulse1Shift      = "pulse1Shift";
+const char* RP2A03AudioProcessor::paramPulse2Sweep      = "pulse2Sweep";
+const char* RP2A03AudioProcessor::paramPulse2Shift      = "pulse2Shift";
 
 //==============================================================================
 String percentTextFunction (const slParameter& p, float v)
@@ -50,6 +54,22 @@ String dutyTextFunction (const slParameter& p, float v)
     return "";
 }
 
+String sweepTextFunction (const slParameter& p, float v)
+{
+    String str;
+    switch (int (v))
+    {
+        case 0: str = "Off"; break;
+        default: str = String (int (v));
+    }
+    return str;
+}
+
+String intTextFunction (const slParameter& p, float v)
+{
+    return String (int (v));
+}
+
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
@@ -61,12 +81,16 @@ RP2A03AudioProcessor::RP2A03AudioProcessor()
     addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "Short",       "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
     addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
     addPluginParameter (new slParameter (paramOutput,          "Output",             "Output",      "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new slParameter (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f));
-    addPluginParameter (new slParameter (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f));
-    addPluginParameter (new slParameter (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f));
-    addPluginParameter (new slParameter (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f));
-    addPluginParameter (new slParameter (paramTriangleTune,    "Triangle Tune",      "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f));
-    addPluginParameter (new slParameter (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f));
+    addPluginParameter (new slParameter (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramTriangleTune,    "Triangle Tune",      "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramPulse1Sweep,     "Pulse 1 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
+    addPluginParameter (new slParameter (paramPulse1Shift,     "Pulse 1 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new slParameter (paramPulse2Sweep,     "Pulse 2 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
+    addPluginParameter (new slParameter (paramPulse2Shift,     "Pulse 2 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -123,6 +147,10 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     const int tFine     = parameterIntValue (paramTriangleTuneFine);
     const float nLevel  = parameterValue (paramNoiseLevel);
     const bool nShort   = parameterValue (paramNoiseShort) > 0.0f;
+    const int p1Sweep   = parameterIntValue (paramPulse1Sweep);
+    const int p1Shift   = parameterIntValue (paramPulse1Shift);
+    const int p2Sweep   = parameterIntValue (paramPulse2Sweep);
+    const int p2Shift   = parameterIntValue (paramPulse2Shift);
     
     outputSmoothed.setValue (getParameter (paramOutput)->getUserValue());
 
@@ -163,6 +191,14 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             {
                 int period = int (111860.8 / getMidiNoteInHertz (curNote + p1Tune + p1Fine / 100.0) - 1);
                 
+                if (p1Sweep != 0)
+                    apu.write_register (0x4001, (p1Sweep != 0 ? 0x80 : 0x00) |
+                                                ((abs (p1Sweep) - 1) << 4) |
+                                                (((p1Sweep < 0) ? 0 : 1) << 3) |
+                                                p1Shift);
+                else
+                    apu.write_register (0x4005, 0x00);
+
                 apu.write_register (0x4002, period & 0xFF);
                 apu.write_register (0x4003, (period >> 8) & 0x7);
             }
@@ -174,6 +210,14 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             {
                 int period = int (111860.8 / getMidiNoteInHertz (curNote + p2Tune + p2Fine / 100.0) - 1);
                 
+                if (p2Sweep != 0)
+                    apu.write_register (0x4005, (p2Sweep != 0 ? 0x80 : 0x00) |
+                                                ((abs (p2Sweep) - 1) << 4) |
+                                                (((p2Sweep < 0) ? 0 : 1) << 3) |
+                                                p2Shift);
+                else
+                    apu.write_register (0x4005, 0x00);
+                    
                 apu.write_register (0x4006, period & 0xFF);
                 apu.write_register (0x4007, (period >> 8) & 0x7);
             }

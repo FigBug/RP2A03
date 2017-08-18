@@ -52,6 +52,10 @@ public:
     static const char* paramPulse2TuneFine;
     static const char* paramTriangleTune;
     static const char* paramTriangleTuneFine;
+    static const char* paramPulse1Sweep;
+    static const char* paramPulse1Shift;
+    static const char* paramPulse2Sweep;
+    static const char* paramPulse2Shift;
 
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
