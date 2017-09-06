@@ -63,7 +63,8 @@ void Simple_Apu::end_frame()
 
 void Simple_Apu::step()
 {
-    int length = 64;
+    int length = 16;
+    time = 0;
     apu.end_frame( length );
     buf.end_frame( length );
 }
