@@ -36,12 +36,12 @@ String percentTextFunction (const slParameter& p, float v)
     return String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
 }
 
-String onOffTextFunction (const slParameter& p, float v)
+String onOffTextFunction (const slParameter&, float v)
 {
     return v > 0.0f ? "On" : "Off";
 }
 
-String dutyTextFunction (const slParameter& p, float v)
+String dutyTextFunction (const slParameter&, float v)
 {
     const int duty = int (v);
     switch (duty)
@@ -54,7 +54,7 @@ String dutyTextFunction (const slParameter& p, float v)
     return "";
 }
 
-String sweepTextFunction (const slParameter& p, float v)
+String sweepTextFunction (const slParameter&, float v)
 {
     String str;
     switch (int (v))
@@ -65,7 +65,7 @@ String sweepTextFunction (const slParameter& p, float v)
     return str;
 }
 
-String intTextFunction (const slParameter& p, float v)
+String intTextFunction (const slParameter&, float v)
 {
     return String (int (v));
 }
@@ -251,6 +251,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     for (int i = 0; i < buffer.getNumSamples(); i++)
         data[i] *= outputSmoothed.getNextValue();
     
+    ScopedLock sl (editorLock);
      if (editor)
          editor->scope.addSamples (data, buffer.getNumSamples());
 }

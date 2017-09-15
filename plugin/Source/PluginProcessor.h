@@ -57,6 +57,12 @@ public:
     static const char* paramPulse2Sweep;
     static const char* paramPulse2Shift;
 
+    void setEditor (RP2A03AudioProcessorEditor* editor_)
+    {
+        ScopedLock sl (editorLock);
+        editor = editor_;
+    }
+
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
     
@@ -65,7 +71,8 @@ private:
     Array<int> noteQueue;
     
     LinearSmoothedValue<float> outputSmoothed;
-    Component::SafePointer<RP2A03AudioProcessorEditor> editor;
+    CriticalSection editorLock;
+    RP2A03AudioProcessorEditor* editor;
     
     Simple_Apu apu;
     
