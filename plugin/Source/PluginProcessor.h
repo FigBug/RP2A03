@@ -72,7 +72,7 @@ private:
     
     LinearSmoothedValue<float> outputSmoothed;
     CriticalSection editorLock;
-    RP2A03AudioProcessorEditor* editor;
+    RP2A03AudioProcessorEditor* editor = nullptr;
     
     Simple_Apu apu;
     
