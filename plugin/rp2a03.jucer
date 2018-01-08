@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.4"
+<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.5"
               bundleIdentifier="com.socalabs.RP2A03" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
               buildAAX="0" pluginName="RP2A03" pluginDesc="RP2A03" pluginManufacturer="SocaLabs"
@@ -8,9 +8,10 @@
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="RP2A03AU"
               pluginRTASCategory="" aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="AAX_ePlugInCategory_Dynamics"
-              jucerVersion="5.0.1" companyName="SocaLabs" companyWebsite="www.socalabs.com"
+              jucerVersion="5.2.0" companyName="SocaLabs" companyWebsite="www.socalabs.com"
               companyEmail="info@socalabs.com" displaySplashScreen="0" reportAppUsage="0"
-              splashScreenColour="Dark" buildStandalone="0" enableIAA="0" cppLanguageStandard="11">
+              splashScreenColour="Dark" buildStandalone="0" enableIAA="0" cppLanguageStandard="11"
+              companyCopyright="SocaLabs">
   <MAINGROUP id="dPRjsF" name="RP2A03">
     <GROUP id="{EE796482-0D02-0052-80F4-B1FE6CE0D41A}" name="Source">
       <GROUP id="{1152B116-4DDF-40B2-E59A-469FEBCF5C64}" name="Resources">
@@ -52,6 +53,10 @@
         <FILE id="vX7TYI" name="Simple_Apu.h" compile="0" resource="0" file="../3rdparty/Nes_Snd_Emu-0.1.7/Simple_Apu.h"/>
       </GROUP>
       <GROUP id="{960C83BD-AB67-7827-EDF2-14718DC9DA48}" name="Common">
+        <FILE id="lXCfzb" name="SingleLineTextEditor.cpp" compile="1" resource="0"
+              file="../modules/slCommon/SingleLineTextEditor.cpp"/>
+        <FILE id="l6yIg9" name="SingleLineTextEditor.h" compile="0" resource="0"
+              file="../modules/slCommon/SingleLineTextEditor.h"/>
         <FILE id="yH291b" name="slCommon.h" compile="0" resource="0" file="../modules/slCommon/slCommon.h"/>
         <FILE id="lOncym" name="slComponents.cpp" compile="1" resource="0"
               file="../modules/slCommon/slComponents.cpp"/>
@@ -88,10 +93,11 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="RP2A03"
                        headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       osxCompatibility="10.9 SDK"/>
+                       osxCompatibility="10.9 SDK" enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="RP2A03"
                        headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       osxArchitecture="64BitUniversal" osxCompatibility="10.9 SDK"/>
+                       osxArchitecture="64BitUniversal" osxCompatibility="10.9 SDK"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
@@ -117,19 +123,23 @@
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files (x86)\VSTPlugins&quot;"
-                       useRuntimeLibDLL="0"/>
+                       useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="0" optimisation="3" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files (x86)\VSTPlugins&quot;"
-                       useRuntimeLibDLL="0"/>
+                       useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0" linkTimeOptimisation="1"/>
         <CONFIGURATION name="Debug64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="1" optimisation="1" targetName="RP2A03_64b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files\VSTPlugins&quot;"
-                       useRuntimeLibDLL="0"/>
+                       useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION name="Release64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="0" optimisation="3" targetName="RP2A03_64b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files\VSTPlugins&quot;"
-                       useRuntimeLibDLL="0"/>
+                       useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0" linkTimeOptimisation="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
