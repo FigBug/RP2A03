@@ -169,7 +169,7 @@ void Nes_Vrc6::run_square( Vrc6_Osc& osc, cpu_time_t end_time )
 			
 			osc.phase = phase;
 		}
-		osc.delay = time - end_time;
+		osc.delay = int (time - end_time);
 	}
 }
 
@@ -223,7 +223,7 @@ void Nes_Vrc6::run_saw( cpu_time_t end_time )
 			osc.amp = amp;
 		}
 		
-		osc.delay = time - end_time;
+		osc.delay = int (time - end_time);
 	}
 	
 	osc.last_amp = last_amp;

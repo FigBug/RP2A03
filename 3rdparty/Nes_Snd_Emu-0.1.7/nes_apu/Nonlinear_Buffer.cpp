@@ -99,7 +99,7 @@ long Nonlinear_Buffer::read_samples( blip_sample_t* out, long count )
 		int lin_bass = lin.begin( buf );
 		int nonlin_bass = nonlin.begin( tnd );
 		
-		for ( int n = count; n--; )
+		for ( int n = int (count); n--; )
 		{
 			int s = lin.read() + nonlin.read();
 			lin.next( lin_bass );
@@ -172,7 +172,7 @@ long Nes_Nonlinearizer::make_nonlinear( Blip_Buffer& buf, long count )
 		unsigned prev = ENTRY( accum );
 		long accum = this->accum;
 		
-		for ( unsigned n = count; n--; )
+		for ( unsigned n = int (count); n--; )
 		{
 			accum += (long) *p - zero_offset;
 			check( (accum >> shift) < half * 2 );

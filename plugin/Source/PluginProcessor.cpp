@@ -11,6 +11,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+using namespace gin;
+
 const char* RP2A03AudioProcessor::paramPulse1Level      = "pulse1Level";
 const char* RP2A03AudioProcessor::paramPulse1DutyCycle  = "pulse1Duty";
 const char* RP2A03AudioProcessor::paramPulse2Level      = "pulse2Level";
@@ -31,17 +33,17 @@ const char* RP2A03AudioProcessor::paramPulse2Sweep      = "pulse2Sweep";
 const char* RP2A03AudioProcessor::paramPulse2Shift      = "pulse2Shift";
 
 //==============================================================================
-String percentTextFunction (const slParameter& p, float v)
+String percentTextFunction (const Parameter& p, float v)
 {
     return String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
 }
 
-String onOffTextFunction (const slParameter&, float v)
+String onOffTextFunction (const Parameter&, float v)
 {
     return v > 0.0f ? "On" : "Off";
 }
 
-String dutyTextFunction (const slParameter&, float v)
+String dutyTextFunction (const Parameter&, float v)
 {
     const int duty = int (v);
     switch (duty)
@@ -54,7 +56,7 @@ String dutyTextFunction (const slParameter&, float v)
     return "";
 }
 
-String sweepTextFunction (const slParameter&, float v)
+String sweepTextFunction (const Parameter&, float v)
 {
     String str;
     switch (int (v))
@@ -65,7 +67,7 @@ String sweepTextFunction (const slParameter&, float v)
     return str;
 }
 
-String intTextFunction (const slParameter&, float v)
+String intTextFunction (const Parameter&, float v)
 {
     return String (int (v));
 }
@@ -73,24 +75,24 @@ String intTextFunction (const slParameter&, float v)
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
-    addPluginParameter (new slParameter (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new slParameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
-    addPluginParameter (new slParameter (paramPulse2Level,     "Pulse 2 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new slParameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
-    addPluginParameter (new slParameter (paramNoiseLevel,      "Noise Level",        "Noise",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new slParameter (paramNoiseShort,      "Noise Short",        "Short",       "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
-    addPluginParameter (new slParameter (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
-    addPluginParameter (new slParameter (paramOutput,          "Output",             "Output",      "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new slParameter (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramTriangleTune,    "Triangle Tune",      "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramPulse1Sweep,     "Pulse 1 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
-    addPluginParameter (new slParameter (paramPulse1Shift,     "Pulse 1 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new slParameter (paramPulse2Sweep,     "Pulse 2 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
-    addPluginParameter (new slParameter (paramPulse2Shift,     "Pulse 2 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new Parameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
+    addPluginParameter (new Parameter (paramPulse2Level,     "Pulse 2 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new Parameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
+    addPluginParameter (new Parameter (paramNoiseLevel,      "Noise Level",        "Noise",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new Parameter (paramNoiseShort,      "Noise Short",        "Short",       "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
+    addPluginParameter (new Parameter (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
+    addPluginParameter (new Parameter (paramOutput,          "Output",             "Output",      "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
+    addPluginParameter (new Parameter (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramTriangleTune,    "Triangle Tune",      "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramPulse1Sweep,     "Pulse 1 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
+    addPluginParameter (new Parameter (paramPulse1Shift,     "Pulse 1 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addPluginParameter (new Parameter (paramPulse2Sweep,     "Pulse 2 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
+    addPluginParameter (new Parameter (paramPulse2Shift,     "Pulse 2 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -120,7 +122,7 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
             apu.step();
         
         Simple_Apu::sample_t out[1024];
-        int count = apu.read_samples(out, jmin (todo, int (apu.samples_avail()), 1024));
+        int count = int (apu.read_samples(out, jmin (todo, int (apu.samples_avail()), 1024)));
         
         float* data = buffer.getWritePointer (0, done);
         for (int i = 0; i < count; i++)

@@ -102,7 +102,7 @@ void Nes_Square::run( cpu_time_t time, cpu_time_t end_time )
 		if ( time < end_time )
 		{
 			// maintain proper phase
-			int count = (end_time - time + timer_period - 1) / timer_period;
+			int count = int ((end_time - time + timer_period - 1) / timer_period);
 			phase = (phase + count) & (phase_range - 1);
 			time += (long) count * timer_period;
 		}
@@ -147,7 +147,7 @@ void Nes_Square::run( cpu_time_t time, cpu_time_t end_time )
 		}
 	}
 	
-	delay = time - end_time;
+	delay = int (time - end_time);
 }
 
 // Nes_Triangle
@@ -218,7 +218,7 @@ void Nes_Triangle::run( cpu_time_t time, cpu_time_t end_time )
 		this->phase = phase;
 		last_amp = calc_amp();
  	}
-	delay = time - end_time;
+	delay = int (time - end_time);
 }
 
 // Nes_Dmc
@@ -265,7 +265,7 @@ int Nes_Dmc::count_reads( cpu_time_t time, cpu_time_t* last_read ) const
 	if ( avail <= 0 )
 		return 0;
 	
-	int count = (avail - 1) / (period * 8) + 1;
+	int count = int ((avail - 1) / (period * 8) + 1);
 	if ( !(regs [0] & loop_flag) && count > length_counter )
 		count = length_counter;
 	
@@ -373,7 +373,7 @@ void Nes_Dmc::run( cpu_time_t time, cpu_time_t end_time )
 		int bits_remain = this->bits_remain;
 		if ( silence && buf_empty )
 		{
-			int count = (end_time - time + period - 1) / period;
+			int count = int ((end_time - time + period - 1) / period);
 			bits_remain = (bits_remain - 1 + 8 - (count % 8)) % 8 + 1;
 			time += count * period;
 		}
@@ -420,7 +420,7 @@ void Nes_Dmc::run( cpu_time_t time, cpu_time_t end_time )
 		}
 		this->bits_remain = bits_remain;
 	}
-	delay = time - end_time;
+	delay = int (time - end_time);
 }
 
 // Nes_Noise
@@ -493,6 +493,6 @@ void Nes_Noise::run( cpu_time_t time, cpu_time_t end_time )
 		}
 	}
 	
-	delay = time - end_time;
+	delay = int (time - end_time);
 }
 

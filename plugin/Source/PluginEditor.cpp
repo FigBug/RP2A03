@@ -12,9 +12,11 @@
 #include "PluginEditor.h"
 #include "BinaryData.h"
 
+using namespace gin;
+
 //==============================================================================
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
-    : slAudioProcessorEditor (p, 80, 100), processor (p)
+  : GinAudioProcessorEditor (p, 80, 100), processor (p)
 {
     additionalProgramming = "Shay Green";
     
@@ -22,7 +24,7 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     logo = ImageFileFormat::loadFrom (BinaryData::logo_png, BinaryData::logo_pngSize);
     
-    for (slParameter* pp : p.getPluginParameters())
+    for (Parameter* pp : p.getPluginParameters())
     {
         auto uid = pp->getUid();
         ParamComponent* c;
@@ -65,7 +67,7 @@ RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
 //==============================================================================
 void RP2A03AudioProcessorEditor::paint (Graphics& g)
 {
-    slAudioProcessorEditor::paint (g);
+    GinAudioProcessorEditor::paint (g);
         
     g.drawImageAt (logo, getWidth() / 2 - logo.getWidth() / 2, 0);
 }
@@ -74,7 +76,7 @@ void RP2A03AudioProcessorEditor::resized()
 {
     using AP = RP2A03AudioProcessor;
     
-    slAudioProcessorEditor::resized();
+    GinAudioProcessorEditor::resized();
     
     Rectangle<int> r = getControlsArea();
     
