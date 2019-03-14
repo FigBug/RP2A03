@@ -6,7 +6,7 @@
               pluginManufacturerCode="Soca" pluginCode="Rp2a" pluginChannelConfigs="{0,1}"
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="RP2A03AU"
-              aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="2" jucerVersion="5.3.2"
+              aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="2" jucerVersion="5.4.1"
               companyName="SocaLabs" companyWebsite="www.socalabs.com" companyEmail="info@socalabs.com"
               displaySplashScreen="0" reportAppUsage="0" splashScreenColour="Dark"
               cppLanguageStandard="11" companyCopyright="SocaLabs" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
@@ -89,9 +89,9 @@
         <MODULEPATH id="juce_audio_formats" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
-        <MODULEPATH id="dRowAudio" path="../modules/drowaudio/module"/>
         <MODULEPATH id="juce_audio_utils" path="../modules/juce/modules"/>
         <MODULEPATH id="gin" path="../modules/gin/modules"/>
+        <MODULEPATH id="dRowAudio" path="../modules/dRowAudio/module"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2017 targetFolder="Builds/VisualStudio2017" toolset="v141_xp">
@@ -132,9 +132,9 @@
         <MODULEPATH id="juce_audio_formats" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
-        <MODULEPATH id="dRowAudio" path="../modules/drowaudio/module"/>
         <MODULEPATH id="juce_audio_utils" path="../modules/juce/modules"/>
         <MODULEPATH id="gin" path="../modules/gin/modules"/>
+        <MODULEPATH id="dRowAudio" path="../modules/dRowAudio/module"/>
       </MODULEPATHS>
     </VS2017>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-fvisibility=hidden"
@@ -163,8 +163,8 @@
         <MODULEPATH id="juce_audio_formats" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../modules/juce/modules"/>
-        <MODULEPATH id="dRowAudio" path="../modules/drowaudio/module"/>
         <MODULEPATH id="gin" path="../modules/gin/modules"/>
+        <MODULEPATH id="dRowAudio" path="../modules/dRowAudio/module"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
@@ -190,5 +190,6 @@
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_WEB_BROWSER="0"/>
   <LIVE_SETTINGS>
     <OSX/>
+    <LINUX/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>
