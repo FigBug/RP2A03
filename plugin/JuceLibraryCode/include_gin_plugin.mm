@@ -6,4 +6,4 @@
 */
 
 #include "AppConfig.h"
-#include <juce_audio_plugin_client/juce_audio_plugin_client_AUv3.mm>
+#include <gin_plugin/gin_plugin.mm>
