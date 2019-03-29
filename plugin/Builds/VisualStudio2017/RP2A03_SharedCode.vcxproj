@@ -501,12 +501,6 @@
     <ClCompile Include="..\..\..\modules\gin\modules\gin\components\singlelinetexteditor.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\modules\gin\modules\gin\dsp\adsr.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\modules\gin\modules\gin\dsp\audioutil.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\..\modules\gin\modules\gin\images\bmpimageformat.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -571,6 +565,15 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\modules\gin\modules\gin\gin.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\dsp\adsr.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\dsp\audioutil.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\gin_dsp.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\modules\gin\modules\gin_plugin\components\plugincomponents.cpp">
@@ -2205,6 +2208,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_dRowAudio.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_gin.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\include_gin_dsp.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_gin_plugin.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_devices.cpp"/>
@@ -2360,8 +2364,6 @@
     <ClInclude Include="..\..\..\modules\gin\modules\gin\components\mapviewer.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\components\propertycomponents.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\components\singlelinetexteditor.h"/>
-    <ClInclude Include="..\..\..\modules\gin\modules\gin\dsp\adsr.h"/>
-    <ClInclude Include="..\..\..\modules\gin\modules\gin\dsp\audioutil.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\geometry\geometry.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\images\bmpimageformat.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\images\imageeffects.h"/>
@@ -2384,6 +2386,9 @@
     <ClInclude Include="..\..\..\modules\gin\modules\gin\utilities\util.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\utilities\valuetreeobject.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\gin.h"/>
+    <ClInclude Include="..\..\..\modules\gin\modules\gin_dsp\dsp\adsr.h"/>
+    <ClInclude Include="..\..\..\modules\gin\modules\gin_dsp\dsp\audioutil.h"/>
+    <ClInclude Include="..\..\..\modules\gin\modules\gin_dsp\gin_dsp.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin_plugin\components\plugincomponents.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin_plugin\components\pluginlookandfeel.h"/>
     <ClInclude Include="..\..\..\modules\gin\modules\gin_plugin\plugin\parameter.h"/>
@@ -2986,6 +2991,7 @@
   <ItemGroup>
     <None Include="..\..\Resources\logo.png"/>
     <None Include="..\..\..\modules\gin\modules\gin\README.md"/>
+    <None Include="..\..\..\modules\gin\modules\gin_dsp\README.md"/>
     <None Include="..\..\..\modules\gin\modules\gin_plugin\README.md"/>
     <None Include="..\..\..\modules\juce\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\..\modules\juce\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>

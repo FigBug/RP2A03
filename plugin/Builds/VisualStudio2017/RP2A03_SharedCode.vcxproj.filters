@@ -83,9 +83,6 @@
     <Filter Include="JUCE Modules\gin\components">
       <UniqueIdentifier>{560D92AE-AD79-D6DF-3F6C-8ABBAE2BD7AD}</UniqueIdentifier>
     </Filter>
-    <Filter Include="JUCE Modules\gin\dsp">
-      <UniqueIdentifier>{BE238AA3-727D-2995-B09F-943A25A93235}</UniqueIdentifier>
-    </Filter>
     <Filter Include="JUCE Modules\gin\geometry">
       <UniqueIdentifier>{4E1A3356-365B-324F-B528-0F143C5BBCC1}</UniqueIdentifier>
     </Filter>
@@ -100,6 +97,12 @@
     </Filter>
     <Filter Include="JUCE Modules\gin">
       <UniqueIdentifier>{DB448E11-657F-23E8-E6D7-EC844A65E321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\gin_dsp\dsp">
+      <UniqueIdentifier>{D90984DA-8BFF-0857-7F98-31FD2690CE60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\gin_dsp">
+      <UniqueIdentifier>{B4698ACB-A464-14B1-6282-C4EC7DDA1F24}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\gin_plugin\components">
       <UniqueIdentifier>{B3C6A2A5-A95E-0E37-2C9C-79FB2D9EF7E0}</UniqueIdentifier>
@@ -712,12 +715,6 @@
     <ClCompile Include="..\..\..\modules\gin\modules\gin\components\singlelinetexteditor.cpp">
       <Filter>JUCE Modules\gin\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\modules\gin\modules\gin\dsp\adsr.cpp">
-      <Filter>JUCE Modules\gin\dsp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\modules\gin\modules\gin\dsp\audioutil.cpp">
-      <Filter>JUCE Modules\gin\dsp</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\modules\gin\modules\gin\images\bmpimageformat.cpp">
       <Filter>JUCE Modules\gin\images</Filter>
     </ClCompile>
@@ -786,6 +783,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\modules\gin\modules\gin\gin.mm">
       <Filter>JUCE Modules\gin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\dsp\adsr.cpp">
+      <Filter>JUCE Modules\gin_dsp\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\dsp\audioutil.cpp">
+      <Filter>JUCE Modules\gin_dsp\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\gin_dsp.cpp">
+      <Filter>JUCE Modules\gin_dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\modules\gin\modules\gin_dsp\gin_dsp.mm">
+      <Filter>JUCE Modules\gin_dsp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\modules\gin\modules\gin_plugin\components\plugincomponents.cpp">
       <Filter>JUCE Modules\gin_plugin\components</Filter>
@@ -2542,6 +2551,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_gin.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\include_gin_dsp.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_gin_plugin.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -3003,12 +3015,6 @@
     <ClInclude Include="..\..\..\modules\gin\modules\gin\components\singlelinetexteditor.h">
       <Filter>JUCE Modules\gin\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\modules\gin\modules\gin\dsp\adsr.h">
-      <Filter>JUCE Modules\gin\dsp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\modules\gin\modules\gin\dsp\audioutil.h">
-      <Filter>JUCE Modules\gin\dsp</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\geometry\geometry.h">
       <Filter>JUCE Modules\gin\geometry</Filter>
     </ClInclude>
@@ -3074,6 +3080,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\modules\gin\modules\gin\gin.h">
       <Filter>JUCE Modules\gin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\gin\modules\gin_dsp\dsp\adsr.h">
+      <Filter>JUCE Modules\gin_dsp\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\gin\modules\gin_dsp\dsp\audioutil.h">
+      <Filter>JUCE Modules\gin_dsp\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\modules\gin\modules\gin_dsp\gin_dsp.h">
+      <Filter>JUCE Modules\gin_dsp</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\modules\gin\modules\gin_plugin\components\plugincomponents.h">
       <Filter>JUCE Modules\gin_plugin\components</Filter>
@@ -4876,6 +4891,9 @@
     </None>
     <None Include="..\..\..\modules\gin\modules\gin\README.md">
       <Filter>JUCE Modules\gin</Filter>
+    </None>
+    <None Include="..\..\..\modules\gin\modules\gin_dsp\README.md">
+      <Filter>JUCE Modules\gin_dsp</Filter>
     </None>
     <None Include="..\..\..\modules\gin\modules\gin_plugin\README.md">
       <Filter>JUCE Modules\gin_plugin</Filter>

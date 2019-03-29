@@ -50,6 +50,7 @@
 //==============================================================================
 #define JUCE_MODULE_AVAILABLE_dRowAudio                  1
 #define JUCE_MODULE_AVAILABLE_gin                        1
+#define JUCE_MODULE_AVAILABLE_gin_dsp                    1
 #define JUCE_MODULE_AVAILABLE_gin_plugin                 1
 #define JUCE_MODULE_AVAILABLE_juce_audio_basics          1
 #define JUCE_MODULE_AVAILABLE_juce_audio_devices         1

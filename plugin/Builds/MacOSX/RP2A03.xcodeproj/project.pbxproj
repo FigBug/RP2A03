@@ -125,6 +125,10 @@
 			isa = PBXBuildFile;
 			fileRef = 8ED4683CBD52B09DF2FCA6B1;
 		};
+		7C10693F4349A68232D80BA5 = {
+			isa = PBXBuildFile;
+			fileRef = 935BD874D451F5B1DF3785BA;
+		};
 		80AA1F755C3564C908D386B2 = {
 			isa = PBXBuildFile;
 			fileRef = 027DC42264BC4B05F2E1D51F;
@@ -189,6 +193,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = "Multi_Buffer.h";
 			path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/Multi_Buffer.h";
+			sourceTree = "SOURCE_ROOT";
+		};
+		020523964E53EE6921C83ED4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "gin_dsp";
+			path = "../../../modules/gin/modules/gin_dsp";
 			sourceTree = "SOURCE_ROOT";
 		};
 		027DC42264BC4B05F2E1D51F = {
@@ -359,6 +370,13 @@
 			path = "Info-VST.plist";
 			sourceTree = "SOURCE_ROOT";
 		};
+		6482109E88556CB004DB1D50 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = BinaryData.cpp;
+			path = ../../JuceLibraryCode/BinaryData.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		E9A43D0E971690239E9BB476 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.cfbundle;
@@ -386,13 +404,6 @@
 			name = Cocoa.framework;
 			path = System/Library/Frameworks/Cocoa.framework;
 			sourceTree = SDKROOT;
-		};
-		6482109E88556CB004DB1D50 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = BinaryData.cpp;
-			path = ../../JuceLibraryCode/BinaryData.cpp;
-			sourceTree = "SOURCE_ROOT";
 		};
 		64B699EEFEE6E3D92D5AEDEC = {
 			isa = PBXFileReference;
@@ -518,6 +529,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = "blargg_source.h";
 			path = "../../../3rdparty/Nes_Snd_Emu-0.1.7/nes_apu/blargg_source.h";
+			sourceTree = "SOURCE_ROOT";
+		};
+		935BD874D451F5B1DF3785BA = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_gin_dsp.mm";
+			path = "../../JuceLibraryCode/include_gin_dsp.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
 		96054A44A99C7EDC7FDB7579 = {
@@ -832,6 +850,7 @@
 			children = (
 				CA31CE79C5351E0DDD568B1A,
 				1063B76133791E0E344065A2,
+				020523964E53EE6921C83ED4,
 				16C8E2A70707F1419EB36AF9,
 				2BFD245EF45281516B718BBA,
 				830481B27DD640CCB52A24D8,
@@ -857,6 +876,7 @@
 				3CB6C841FD05C2E7C0307DD9,
 				83B5F2744BF9D792331698D9,
 				8ED4683CBD52B09DF2FCA6B1,
+				935BD874D451F5B1DF3785BA,
 				027DC42264BC4B05F2E1D51F,
 				D8292D3DE6FFAE5002B9985B,
 				34B7A8E3C5B15E9274C2686B,
@@ -973,7 +993,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../../modules/juce/modules/juce_audio_processors/format_types/VST3_SDK",
+					"$(HOME)/SDKs/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../../modules/dRowAudio/module",
 					"../../../modules/gin/modules",
@@ -1029,7 +1049,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../../modules/juce/modules/juce_audio_processors/format_types/VST3_SDK",
+					"$(HOME)/SDKs/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../../modules/dRowAudio/module",
 					"../../../modules/gin/modules",
@@ -1084,7 +1104,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../../modules/juce/modules/juce_audio_processors/format_types/VST3_SDK",
+					"$(HOME)/SDKs/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../../modules/dRowAudio/module",
 					"../../../modules/gin/modules",
@@ -1141,7 +1161,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../../modules/juce/modules/juce_audio_processors/format_types/VST3_SDK",
+					"$(HOME)/SDKs/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../../modules/dRowAudio/module",
 					"../../../modules/gin/modules",
@@ -1195,7 +1215,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"../../../modules/juce/modules/juce_audio_processors/format_types/VST3_SDK",
+					"$(HOME)/SDKs/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../../modules/dRowAudio/module",
 					"../../../modules/gin/modules",
@@ -1245,7 +1265,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"../../../modules/juce/modules/juce_audio_processors/format_types/VST3_SDK",
+					"$(HOME)/SDKs/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../../modules/dRowAudio/module",
 					"../../../modules/gin/modules",
@@ -1541,6 +1561,7 @@
 				C48B954A55656BC3F1F3D0F7,
 				7BD09B5FC151D1BD34A4912E,
 				A2FA432BE1A33D8C7EA42DA7,
+				7C10693F4349A68232D80BA5,
 				80AA1F755C3564C908D386B2,
 				B07AA801E696D7D54B87F0CE,
 				7BCC3E36748393F3718BC0B5,

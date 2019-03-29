@@ -16,6 +16,7 @@
 
 #include <dRowAudio/dRowAudio.h>
 #include <gin/gin.h>
+#include <gin_dsp/gin_dsp.h>
 #include <gin_plugin/gin_plugin.h>
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_devices/juce_audio_devices.h>

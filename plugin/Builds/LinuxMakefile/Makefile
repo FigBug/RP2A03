@@ -98,6 +98,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
   $(JUCE_OBJDIR)/include_dRowAudio_f10914a.o \
   $(JUCE_OBJDIR)/include_gin_8be23c36.o \
+  $(JUCE_OBJDIR)/include_gin_dsp_3791f7b8.o \
   $(JUCE_OBJDIR)/include_gin_plugin_1aa0966.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
@@ -205,6 +206,11 @@ $(JUCE_OBJDIR)/include_dRowAudio_f10914a.o: ../../JuceLibraryCode/include_dRowAu
 $(JUCE_OBJDIR)/include_gin_8be23c36.o: ../../JuceLibraryCode/include_gin.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling include_gin.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/include_gin_dsp_3791f7b8.o: ../../JuceLibraryCode/include_gin_dsp.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling include_gin_dsp.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/include_gin_plugin_1aa0966.o: ../../JuceLibraryCode/include_gin_plugin.cpp
