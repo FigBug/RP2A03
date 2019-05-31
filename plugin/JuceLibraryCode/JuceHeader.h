@@ -47,7 +47,7 @@ namespace ProjectInfo
 {
     const char* const  projectName    = "RP2A03";
     const char* const  companyName    = "SocaLabs";
-    const char* const  versionString  = "1.0.7";
-    const int          versionNumber  = 0x10007;
+    const char* const  versionString  = "1.0.8";
+    const int          versionNumber  = 0x10008;
 }
 #endif
