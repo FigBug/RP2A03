@@ -151,7 +151,7 @@ void Nes_Apu::run_until( cpu_time_t end_time )
 		square2.run( last_time, time );
 		triangle.run( last_time, time );
 		noise.run( last_time, time );
-		git dmc.run( last_time, time );
+		dmc.run( last_time, time );
 		last_time = time;
 		
 		if ( time == end_time )
