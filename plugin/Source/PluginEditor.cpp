@@ -78,8 +78,6 @@ void RP2A03AudioProcessorEditor::resized()
     
     GinAudioProcessorEditor::resized();
     
-    Rectangle<int> r = getControlsArea();
-    
     componentForId (AP::paramPulse1Level)->setBounds (getGridArea (0, 0));
     componentForId (AP::paramPulse1DutyCycle)->setBounds (getGridArea (1, 0));
     componentForId (AP::paramPulse1Tune)->setBounds (getGridArea (2, 0));

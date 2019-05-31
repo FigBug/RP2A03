@@ -136,27 +136,10 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
 
 void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midi)
 {
-    const float p1Level = parameterValue (paramPulse1Level);
-    const int p1Duty    = parameterIntValue (paramPulse1DutyCycle);
-    const int p1Tune    = parameterIntValue (paramPulse1Tune);
-    const int p1Fine    = parameterIntValue (paramPulse1TuneFine);
-    const float p2Level = parameterValue (paramPulse2Level);
-    const int p2Duty    = parameterIntValue (paramPulse2DutyCycle);
-    const int p2Tune    = parameterIntValue (paramPulse2Tune);
-    const int p2Fine    = parameterIntValue (paramPulse2TuneFine);
-    const float tLevel  = parameterValue (paramTriangleLevel);
-    const int tTune     = parameterIntValue (paramTriangleTune);
-    const int tFine     = parameterIntValue (paramTriangleTuneFine);
-    const float nLevel  = parameterValue (paramNoiseLevel);
-    const bool nShort   = parameterValue (paramNoiseShort) > 0.0f;
-    const int p1Sweep   = parameterIntValue (paramPulse1Sweep);
-    const int p1Shift   = parameterIntValue (paramPulse1Shift);
-    const int p2Sweep   = parameterIntValue (paramPulse2Sweep);
-    const int p2Shift   = parameterIntValue (paramPulse2Shift);
-    
-    outputSmoothed.setValue (getParameter (paramOutput)->getUserValue());
+    outputSmoothed.setTargetValue (getParameter (paramOutput)->getUserValue());
 
     int done = 0;
+    //runOsc (lastNote, false);
     runUntil (done, buffer, 0);
     
     int pos = 0;
@@ -180,69 +163,11 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
             noteQueue.clear();
         }
         
-        const int curNote = noteQueue.size() > 0 ? noteQueue.getLast() : -1;
+        int curNote = noteQueue.size() > 0 ? noteQueue.getLast() : -1;
         
         if (curNote != lastNote)
         {
-            int v = curNote == -1 ? 0 : velocity;
-            
-            // Pulse 1
-            apu.write_register (0x4000, (p1Duty << 6) | 0x30 | int (p1Level * v / 127.0 * 0xF));
-            
-            if (curNote != -1)
-            {
-                int period = int (111860.8 / getMidiNoteInHertz (curNote + p1Tune + p1Fine / 100.0) - 1);
-                
-                if (p1Sweep != 0)
-                    apu.write_register (0x4001, (p1Sweep != 0 ? 0x80 : 0x00) |
-                                                ((abs (p1Sweep) - 1) << 4) |
-                                                (((p1Sweep < 0) ? 0 : 1) << 3) |
-                                                p1Shift);
-                else
-                    apu.write_register (0x4005, 0x00);
-
-                apu.write_register (0x4002, period & 0xFF);
-                apu.write_register (0x4003, (period >> 8) & 0x7);
-            }
-            
-            // Pulse 2
-            apu.write_register (0x4004, (p2Duty << 6) | 0x30 | int (p2Level * v / 127.0 * 0xF));
-            
-            if (curNote != -1)
-            {
-                int period = int (111860.8 / getMidiNoteInHertz (curNote + p2Tune + p2Fine / 100.0) - 1);
-                
-                if (p2Sweep != 0)
-                    apu.write_register (0x4005, (p2Sweep != 0 ? 0x80 : 0x00) |
-                                                ((abs (p2Sweep) - 1) << 4) |
-                                                (((p2Sweep < 0) ? 0 : 1) << 3) |
-                                                p2Shift);
-                else
-                    apu.write_register (0x4005, 0x00);
-                    
-                apu.write_register (0x4006, period & 0xFF);
-                apu.write_register (0x4007, (period >> 8) & 0x7);
-            }
-            
-            // Triangle
-            apu.write_register (0x4008, curNote == -1 ? 0x00 : 0xFF);
-            if (curNote != -1)
-            {
-                int period = int (tLevel == 1.0f ? 111860.8 / getMidiNoteInHertz (curNote + tTune + tFine / 100.0) * 2 - 1 : 0);
-                
-                apu.write_register (0x400A, period & 0xFF);
-                apu.write_register (0x400B, (period >> 8) & 0x7);
-            }
-            
-            // Noise
-            apu.write_register (0x400C, 0x30 | int (nLevel * v / 127.0 * 0xF));
-            
-            if (curNote != -1)
-            {
-                apu.write_register (0x400E, (nShort ? 0x80 : 0x00) | (curNote % 16));
-                apu.write_register (0x400F, 0xFF);
-            }
-            
+            runOsc (curNote, curNote != lastNote);
             lastNote = curNote;
         }
     }
@@ -256,6 +181,110 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     ScopedLock sl (editorLock);
      if (editor)
          editor->scope.addSamples (data, buffer.getNumSamples());
+}
+
+void RP2A03AudioProcessor::runOsc (int curNote, bool trigger)
+{
+    const float p1Level = parameterValue (paramPulse1Level);
+    const int p1Duty    = parameterIntValue (paramPulse1DutyCycle);
+    const int p1Tune    = parameterIntValue (paramPulse1Tune);
+    const int p1Fine    = parameterIntValue (paramPulse1TuneFine);
+    const float p2Level = parameterValue (paramPulse2Level);
+    const int p2Duty    = parameterIntValue (paramPulse2DutyCycle);
+    const int p2Tune    = parameterIntValue (paramPulse2Tune);
+    const int p2Fine    = parameterIntValue (paramPulse2TuneFine);
+    const float tLevel  = parameterValue (paramTriangleLevel);
+    const int tTune     = parameterIntValue (paramTriangleTune);
+    const int tFine     = parameterIntValue (paramTriangleTuneFine);
+    const float nLevel  = parameterValue (paramNoiseLevel);
+    const bool nShort   = parameterValue (paramNoiseShort) > 0.0f;
+    const int p1Sweep   = parameterIntValue (paramPulse1Sweep);
+    const int p1Shift   = parameterIntValue (paramPulse1Shift);
+    const int p2Sweep   = parameterIntValue (paramPulse2Sweep);
+    const int p2Shift   = parameterIntValue (paramPulse2Shift);
+    
+    int v = curNote == -1 ? 0 : velocity;
+    
+    // Pulse 1
+    int period1 = int (111860.8 / getMidiNoteInHertz (curNote + p1Tune + p1Fine / 100.0) - 1);
+    if (period1 <= 0x7ff && curNote != -1)
+    {
+        writeReg (0x4000, (p1Duty << 6) | 0x30 | int (p1Level * v / 127.0 * 0xF), trigger);
+
+        if (p1Sweep != 0)
+            writeReg (0x4001,
+                      (p1Sweep != 0 ? 0x80 : 0x00) |
+                      ((abs (p1Sweep) - 1) << 4) |
+                      (((p1Sweep < 0) ? 0 : 1) << 3) |
+                      p1Shift, trigger);
+        else
+            writeReg (0x4001, 0x00, trigger);
+        
+        writeReg (0x4003, (period1 >> 8) & 0x7, trigger);
+        writeReg (0x4002, period1 & 0xFF, trigger);
+    }
+    else
+    {
+        writeReg (0x4000, (p1Duty << 6) | 0x30, trigger);
+    }
+
+    // Pulse 2
+    int period2 = int (111860.8 / getMidiNoteInHertz (curNote + p2Tune + p2Fine / 100.0) - 1);
+    if (period2 < 0x7ff && curNote != -1)
+    {
+        writeReg (0x4004, (p2Duty << 6) | 0x30 | int (p2Level * v / 127.0 * 0xF), trigger);
+
+        if (p2Sweep != 0)
+            writeReg (0x4005,
+                      (p2Sweep != 0 ? 0x80 : 0x00) |
+                      ((abs (p2Sweep) - 1) << 4) |
+                      (((p2Sweep < 0) ? 0 : 1) << 3) |
+                      p2Shift, trigger);
+        else
+            writeReg (0x4005, 0x00, trigger);
+        
+        writeReg (0x4006, period2 & 0xFF, trigger);
+        writeReg (0x4007, (period2 >> 8) & 0x7, trigger);
+    }
+    else
+    {
+        writeReg (0x4004, (p2Duty << 6) | 0x30, trigger);
+    }
+    
+    // Triangle
+    int period3 = int (tLevel == 1.0f ? 111860.8 / getMidiNoteInHertz (curNote + tTune + tFine / 100.0) * 2 - 1 : 0);
+    if (period3 > 0 && period3 <= 0x7ff && curNote != -1)
+    {
+        writeReg (0x4008, 0xFF, trigger);
+        writeReg (0x400A, period3 & 0xFF, trigger);
+        writeReg (0x400B, (period3 >> 8) & 0x7, trigger);
+    }
+    else
+    {
+        writeReg (0x4008, 0x00, trigger);
+    }
+    
+    // Noise
+    if (curNote != -1)
+    {
+        writeReg (0x400C, 0x30 | int (nLevel * v / 127.0 * 0xF), trigger);
+        writeReg (0x400E, (nShort ? 0x80 : 0x00) | (curNote % 16), trigger);
+        writeReg (0x400F, 0xFF, trigger);
+    }
+    else
+    {
+        writeReg (0x400C, 0x30, trigger);
+    }
+}
+
+void RP2A03AudioProcessor::writeReg (int reg, int value, bool force)
+{
+    auto itr = regCache.find (reg);
+    if (itr == regCache.end() || itr->second != value || force)
+    {
+        regCache[reg] = value;
+        apu.write_register (reg, value);
+    }
 }
 
 //==============================================================================

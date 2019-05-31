@@ -47,7 +47,7 @@ public:
 	void save_snapshot( apu_snapshot_t* out ) const;
 	void load_snapshot( apu_snapshot_t const& );
 	
-private:
+public:
 	Nes_Apu apu;
 	Blip_Buffer buf;
 	blip_time_t time;

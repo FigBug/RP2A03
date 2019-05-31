@@ -103,7 +103,7 @@ public:
 private:
 	friend class Nes_Nonlinearizer;
 	void enable_nonlinear( double volume );
-private:
+public:
 	// noncopyable
 	Nes_Apu( const Nes_Apu& );
 	Nes_Apu& operator = ( const Nes_Apu& );

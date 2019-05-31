@@ -63,6 +63,8 @@ public:
 
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
+    void runOsc (int curNote, bool trigger);
+    void writeReg (int reg, int value, bool force);
     
     int lastNote = -1;
     int velocity = 0;
@@ -73,6 +75,8 @@ private:
     RP2A03AudioProcessorEditor* editor = nullptr;
     
     Simple_Apu apu;
+    
+    std::map<int, int> regCache;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RP2A03AudioProcessor)

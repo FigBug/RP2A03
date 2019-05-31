@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.6"
+<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.7"
               bundleIdentifier="com.socalabs.RP2A03" includeBinaryInAppConfig="1"
               pluginName="RP2A03" pluginDesc="RP2A03" pluginManufacturer="SocaLabs"
               pluginManufacturerCode="Soca" pluginCode="Rp2a" pluginChannelConfigs="{0,1}"
@@ -11,9 +11,9 @@
               displaySplashScreen="0" reportAppUsage="0" splashScreenColour="Dark"
               cppLanguageStandard="11" companyCopyright="SocaLabs" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginAUMainType="'aumu'" pluginVSTCategory="kPlugCategSynth"
-              pluginFormats="buildVST,buildAU" buildVST="1" buildVST3="0" buildAU="1"
-              buildAUv3="0" buildRTAS="0" buildAAX="0" buildStandalone="0"
-              enableIAA="0">
+              pluginFormats="buildAU,buildStandalone,buildVST" buildVST="1"
+              buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0" buildAAX="0"
+              buildStandalone="1" enableIAA="0">
   <MAINGROUP id="dPRjsF" name="RP2A03">
     <GROUP id="{EE796482-0D02-0052-80F4-B1FE6CE0D41A}" name="Source">
       <GROUP id="{1152B116-4DDF-40B2-E59A-469FEBCF5C64}" name="Resources">
@@ -64,35 +64,6 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-Wunused-value">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="RP2A03"
-                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       osxCompatibility="10.9 SDK" enablePluginBinaryCopyStep="1"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="RP2A03"
-                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       osxArchitecture="64BitUniversal" osxCompatibility="10.9 SDK"
-                       enablePluginBinaryCopyStep="1"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="gin" path="../modules/gin/modules"/>
-        <MODULEPATH id="dRowAudio" path="../modules/dRowAudio/module"/>
-        <MODULEPATH id="juce_core" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_graphics" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_events" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../modules/juce/modules"/>
-        <MODULEPATH id="gin_plugin" path="../modules/gin/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../modules/juce/modules"/>
-        <MODULEPATH id="gin_dsp" path="../modules/gin/modules"/>
-      </MODULEPATHS>
-    </XCODE_MAC>
     <VS2017 targetFolder="Builds/VisualStudio2017" toolset="v141_xp">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
@@ -133,6 +104,9 @@
         <MODULEPATH id="juce_audio_devices" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_cryptography" path="../modules/juce/modules"/>
         <MODULEPATH id="gin_dsp" path="../modules/gin/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </VS2017>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-fvisibility=hidden"
@@ -162,8 +136,40 @@
         <MODULEPATH id="juce_audio_devices" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_cryptography" path="../modules/juce/modules"/>
         <MODULEPATH id="gin_dsp" path="../modules/gin/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
+                       osxCompatibility="10.9 SDK"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
+                       osxCompatibility="10.9 SDK"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_events" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_core" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../modules/juce/modules"/>
+        <MODULEPATH id="gin_plugin" path="../modules/gin/modules"/>
+        <MODULEPATH id="gin_dsp" path="../modules/gin/modules"/>
+        <MODULEPATH id="gin" path="../modules/gin/modules"/>
+        <MODULEPATH id="dRowAudio" path="../modules/dRowAudio/module"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="dRowAudio" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
@@ -173,6 +179,8 @@
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
@@ -182,6 +190,8 @@
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_WEB_BROWSER="0"/>
   <LIVE_SETTINGS>
