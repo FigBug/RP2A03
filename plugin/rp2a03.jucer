@@ -9,7 +9,7 @@
               aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="2" jucerVersion="5.4.3"
               companyName="SocaLabs" companyWebsite="www.socalabs.com" companyEmail="info@socalabs.com"
               displaySplashScreen="0" reportAppUsage="0" splashScreenColour="Dark"
-              cppLanguageStandard="11" companyCopyright="SocaLabs" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              cppLanguageStandard="17" companyCopyright="SocaLabs" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginAUMainType="'aumu'" pluginVSTCategory="kPlugCategSynth"
               pluginFormats="buildAU,buildStandalone,buildVST" buildVST="1"
               buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0" buildAAX="0"
@@ -107,6 +107,7 @@
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </VS2017>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-fvisibility=hidden"
@@ -140,6 +141,7 @@
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
@@ -170,6 +172,7 @@
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
+        <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
@@ -188,6 +191,7 @@
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
