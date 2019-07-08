@@ -145,9 +145,10 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
-                       osxCompatibility="10.9 SDK"/>
+                       osxCompatibility="10.9 SDK" recommendedWarnings="LLVM"/>
         <CONFIGURATION isDebug="0" name="Release" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
-                       osxCompatibility="10.9 SDK" osxArchitecture="64BitUniversal"/>
+                       osxCompatibility="10.9 SDK" osxArchitecture="64BitUniversal"
+                       recommendedWarnings="LLVM"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../modules/juce/modules"/>
