@@ -64,7 +64,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <VS2017 targetFolder="Builds/VisualStudio2017" toolset="v141_xp" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
+    <VS2019 targetFolder="Builds/VisualStudio2019" toolset="v142" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
                        isDebug="1" optimisation="1" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
@@ -109,7 +109,7 @@
         <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
-    </VS2017>
+    </VS2019>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-fvisibility=hidden"
                 extraLinkerFlags="-fdata-sections -ffunction-sections -Wl,--gc-sections -Wl,-O1 -Wl,--as-needed -Wl,--strip-all"
                 vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
