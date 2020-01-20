@@ -149,7 +149,8 @@
         <CONFIGURATION isDebug="1" name="Debug" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
                        osxCompatibility="10.9 SDK" recommendedWarnings="LLVM"/>
         <CONFIGURATION isDebug="0" name="Release" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
-                       osxCompatibility="10.9 SDK" osxArchitecture="64BitIntel" recommendedWarnings="LLVM"/>
+                       osxCompatibility="10.9 SDK" osxArchitecture="64BitIntel" recommendedWarnings="LLVM"
+                       linkTimeOptimisation="0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../modules/juce/modules"/>
