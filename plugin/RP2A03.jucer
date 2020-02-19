@@ -6,7 +6,7 @@
               pluginManufacturerCode="Soca" pluginCode="Rp2a" pluginChannelConfigs="{0,1}"
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="RP2A03AU"
-              aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="2" jucerVersion="5.4.5"
+              aaxIdentifier="com.socalabs.RP2A03" pluginAAXCategory="2" jucerVersion="5.4.7"
               companyName="SocaLabs" companyWebsite="www.socalabs.com" companyEmail="info@socalabs.com"
               displaySplashScreen="0" reportAppUsage="0" splashScreenColour="Dark"
               cppLanguageStandard="17" companyCopyright="SocaLabs" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
@@ -144,7 +144,8 @@
         <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4"
+               extraDefs="JUCE_COREGRAPHICS_DRAW_ASYNC=1">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
                        osxCompatibility="10.9 SDK" recommendedWarnings="LLVM"/>

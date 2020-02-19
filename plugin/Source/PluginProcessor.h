@@ -55,12 +55,8 @@ public:
     static const char* paramPulse2Sweep;
     static const char* paramPulse2Shift;
 
-    void setEditor (RP2A03AudioProcessorEditor* editor_)
-    {
-        ScopedLock sl (editorLock);
-        editor = editor_;
-    }
-
+    gin::AudioFifo fifo {1, 44100};
+    
 private:
     void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
     void runOsc (int curNote, bool trigger);
@@ -71,8 +67,6 @@ private:
     Array<int> noteQueue;
     
     LinearSmoothedValue<float> outputSmoothed;
-    CriticalSection editorLock;
-    RP2A03AudioProcessorEditor* editor = nullptr;
     
     Simple_Apu apu;
     

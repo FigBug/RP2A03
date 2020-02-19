@@ -16,7 +16,7 @@ using namespace gin;
 
 //==============================================================================
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
-  : GinAudioProcessorEditor (p, 80, 100), processor (p)
+  : GinAudioProcessorEditor (p, 80, 100), proc (p)
 {
     additionalProgramming = "Shay Green";
     
@@ -24,7 +24,7 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     logo = ImageFileFormat::loadFrom (BinaryData::logo_png, BinaryData::logo_pngSize);
     
-    for (Parameter* pp : p.getPluginParameters())
+    for (auto pp : p.getPluginParameters())
     {
         auto uid = pp->getUid();
         ParamComponent* c;
@@ -55,13 +55,10 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     scope.setNumSamplesPerPixel (2);
     scope.setVerticalZoomFactor (3.0f);
-
-    p.setEditor (this);
 }
 
 RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
 {
-    processor.setEditor (nullptr);
 }
 
 //==============================================================================

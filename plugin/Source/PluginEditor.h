@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include <JuceHeader.h>
 #include "PluginProcessor.h"
 
 //==============================================================================
@@ -24,9 +24,9 @@ public:
     void resized() override;
     void paint (Graphics& g) override;
 
-    RP2A03AudioProcessor& processor;
+    RP2A03AudioProcessor& proc;
     
-    drow::TriggeredScope scope;
+    gin::TriggeredScope scope {proc.fifo};
     Image logo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RP2A03AudioProcessorEditor)

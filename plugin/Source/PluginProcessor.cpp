@@ -75,24 +75,24 @@ String intTextFunction (const Parameter&, float v)
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
 {
-    addPluginParameter (new Parameter (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new Parameter (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
-    addPluginParameter (new Parameter (paramPulse2Level,     "Pulse 2 Level",      "Pulse",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new Parameter (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "Duty Cycle",  "", 0.0f, 3.0f,  1.0f, 0.0f, 1.0f, dutyTextFunction));
-    addPluginParameter (new Parameter (paramNoiseLevel,      "Noise Level",        "Noise",       "", 0.0f, 1.0f,  0.0f, 0.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new Parameter (paramNoiseShort,      "Noise Short",        "Short",       "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
-    addPluginParameter (new Parameter (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", 0.0f, 1.0f,  1.0f, 0.0f, 1.0f, onOffTextFunction));
-    addPluginParameter (new Parameter (paramOutput,          "Output",             "Output",      "", 0.0f, 1.0f,  0.0f, 1.0f, 1.0f, percentTextFunction));
-    addPluginParameter (new Parameter (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramTriangleTune,    "Triangle Tune",      "Tune",        "", -48.0f, 48.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", -100.0f, 100.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramPulse1Sweep,     "Pulse 1 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
-    addPluginParameter (new Parameter (paramPulse1Shift,     "Pulse 1 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
-    addPluginParameter (new Parameter (paramPulse2Sweep,     "Pulse 2 Sweep",      "Sweep",       "", -8.0f, 8.0f, 1.0f, 0.0f, 1.0f, sweepTextFunction));
-    addPluginParameter (new Parameter (paramPulse2Shift,     "Pulse 2 Shift",      "Shift",       "", 0.0f, 7.0f, 1.0f, 0.0f, 1.0f, intTextFunction));
+    addExtParam (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 1.0f, 0.0f, percentTextFunction);
+    addExtParam (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", {    0.0f,   3.0f, 1.0f, 1.0f }, 0.0f, 0.0f, dutyTextFunction);
+    addExtParam (paramPulse2Level,     "Pulse 2 Level",      "Pulse",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 0.0f, 0.0f, percentTextFunction);
+    addExtParam (paramPulse2DutyCycle, "Pulse 2 Duty Cycle", "Duty Cycle",  "", {    0.0f,   3.0f, 1.0f, 1.0f }, 0.0f, 0.0f, dutyTextFunction);
+    addExtParam (paramNoiseLevel,      "Noise Level",        "Noise",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 0.0f, 0.0f, percentTextFunction);
+    addExtParam (paramNoiseShort,      "Noise Short",        "Short",       "", {    0.0f,   1.0f, 1.0f, 1.0f }, 0.0f, 0.0f, onOffTextFunction);
+    addExtParam (paramTriangleLevel,   "Triangle Level",     "Triangle",    "", {    0.0f,   1.0f, 1.0f, 1.0f }, 0.0f, 0.0f, onOffTextFunction);
+    addExtParam (paramOutput,          "Output",             "Output",      "", {    0.0f,   1.0f, 0.0f, 1.0f }, 1.0f, 0.0f, percentTextFunction);
+    addExtParam (paramPulse1Tune,      "Pulse 1 Tune",       "Tune",        "", {  -48.0f,  48.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramPulse1TuneFine,  "Pulse 1 Tune Fine",  "Fine",        "", { -100.0f, 100.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramPulse2Tune,      "Pulse 2 Tune",       "Tune",        "", {  -48.0f,  48.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramPulse2TuneFine,  "Pulse 2 Tune Fine",  "Fine",        "", { -100.0f, 100.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramTriangleTune,    "Triangle Tune",      "Tune",        "", {  -48.0f,  48.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramTriangleTuneFine,"Triangle Tune Fine", "Fine",        "", { -100.0f, 100.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramPulse1Sweep,     "Pulse 1 Sweep",      "Sweep",       "", {   -8.0f,   8.0f, 1.0f, 1.0f }, 0.0f, 0.0f, sweepTextFunction);
+    addExtParam (paramPulse1Shift,     "Pulse 1 Shift",      "Shift",       "", {    0.0f,   7.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+    addExtParam (paramPulse2Sweep,     "Pulse 2 Sweep",      "Sweep",       "", {   -8.0f,   8.0f, 1.0f, 1.0f }, 0.0f, 0.0f, sweepTextFunction);
+    addExtParam (paramPulse2Shift,     "Pulse 2 Shift",      "Shift",       "", {    0.0f,   7.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
@@ -172,15 +172,15 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
         }
     }
     
-    runUntil (done, buffer, buffer.getNumSamples());
+    int numSamples = buffer.getNumSamples();
+    runUntil (done, buffer, numSamples);
     
     float* data = buffer.getWritePointer (0);
-    for (int i = 0; i < buffer.getNumSamples(); i++)
+    for (int i = 0; i < numSamples; i++)
         data[i] *= outputSmoothed.getNextValue();
-    
-    ScopedLock sl (editorLock);
-     if (editor)
-         editor->scope.addSamples (data, buffer.getNumSamples());
+
+    if (fifo.getFreeSpace() >= numSamples)
+        fifo.writeMono (data, numSamples);
 }
 
 void RP2A03AudioProcessor::runOsc (int curNote, bool trigger)
@@ -295,8 +295,7 @@ bool RP2A03AudioProcessor::hasEditor() const
 
 AudioProcessorEditor* RP2A03AudioProcessor::createEditor()
 {
-    editor = new RP2A03AudioProcessorEditor (*this);
-    return editor;
+    return new RP2A03AudioProcessorEditor (*this);
 }
 
 //==============================================================================
