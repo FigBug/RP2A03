@@ -139,7 +139,7 @@ void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     outputSmoothed.setTargetValue (getParameter (paramOutput)->getUserValue());
 
     int done = 0;
-    //runOsc (lastNote, false);
+    runOsc (lastNote, false);
     runUntil (done, buffer, 0);
     
     int pos = 0;

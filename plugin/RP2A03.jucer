@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.8"
+<JUCERPROJECT id="JPnRUR" name="RP2A03" projectType="audioplug" version="1.0.9"
               bundleIdentifier="com.socalabs.RP2A03" includeBinaryInAppConfig="1"
               pluginName="RP2A03" pluginDesc="RP2A03" pluginManufacturer="SocaLabs"
               pluginManufacturerCode="Soca" pluginCode="Rp2a" pluginChannelConfigs="{0,1}"
