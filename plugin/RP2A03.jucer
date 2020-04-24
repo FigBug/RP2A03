@@ -67,22 +67,22 @@
     <VS2019 targetFolder="Builds/VisualStudio2019" toolset="v142" vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
-                       isDebug="1" optimisation="1" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
+                       isDebug="1" optimisation="1" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files (x86)\VSTPlugins&quot;"
                        useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
                        enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
-                       isDebug="0" optimisation="3" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
+                       isDebug="0" optimisation="3" targetName="RP2A03_32b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files (x86)\VSTPlugins&quot;"
                        useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
                        enablePluginBinaryCopyStep="0" linkTimeOptimisation="0"/>
         <CONFIGURATION name="Debug64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="RP2A03_64b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
+                       isDebug="1" optimisation="1" targetName="RP2A03_64b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files\VSTPlugins&quot;"
                        useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
                        enablePluginBinaryCopyStep="0"/>
         <CONFIGURATION name="Release64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="RP2A03_64b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
+                       isDebug="0" optimisation="3" targetName="RP2A03_64b" headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7"
                        postbuildCommand="copy /Y &quot;$(OutDir)\$(TargetFileName)&quot; &quot;C:\Program Files\VSTPlugins&quot;"
                        useRuntimeLibDLL="0" debugInformationFormat="ProgramDatabase"
                        enablePluginBinaryCopyStep="0" linkTimeOptimisation="0"/>
@@ -106,7 +106,6 @@
         <MODULEPATH id="gin_dsp" path="../modules/gin/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </VS2019>
@@ -115,11 +114,9 @@
                 vstLegacyFolder="../modules/plugin_sdk/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="RP2A03"
-                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       libraryPath="/usr/X11R6/lib/"/>
+                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7" libraryPath="/usr/X11R6/lib/"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="RP2A03"
-                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7&#10;../../../modules/slCommon"
-                       libraryPath="/usr/X11R6/lib/"/>
+                       headerPath="../../../3rdparty/Nes_Snd_Emu-0.1.7" libraryPath="/usr/X11R6/lib/"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="gin" path="../modules/gin/modules"/>
@@ -140,7 +137,6 @@
         <MODULEPATH id="gin_dsp" path="../modules/gin/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
@@ -172,7 +168,6 @@
         <MODULEPATH id="dRowAudio" path="../modules/dRowAudio/module"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_opengl" path="../modules/juce/modules"/>
-        <MODULEPATH id="juce_video" path="../modules/juce/modules"/>
         <MODULEPATH id="juce_dsp" path="../modules/juce/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
@@ -198,7 +193,6 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_WEB_BROWSER="0"/>
   <LIVE_SETTINGS>
