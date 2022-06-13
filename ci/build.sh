@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-PLUGIN="PAPU"
+PLUGIN="RP2A03"
 
 # linux specific stiff
 if [ $OS = "linux" ]; then
