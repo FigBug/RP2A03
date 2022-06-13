@@ -14,7 +14,7 @@
 #include "PluginProcessor.h"
 
 //==============================================================================
-class RP2A03AudioProcessorEditor  : public gin::GinAudioProcessorEditor
+class RP2A03AudioProcessorEditor  : public gin::ProcessorEditor
 {
 public:
     RP2A03AudioProcessorEditor (RP2A03AudioProcessor&);

@@ -17,12 +17,12 @@
 /**
 */
 class RP2A03AudioProcessorEditor;
-class RP2A03AudioProcessor : public gin::GinProcessor
+class RP2A03AudioProcessor : public gin::Processor
 {
 public:
     //==============================================================================
     RP2A03AudioProcessor();
-    ~RP2A03AudioProcessor();
+    ~RP2A03AudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;

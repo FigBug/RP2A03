@@ -16,7 +16,7 @@ using namespace gin;
 
 //==============================================================================
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
-  : GinAudioProcessorEditor (p, 80, 100), proc (p)
+  : gin::ProcessorEditor (p), proc (p)
 {
     additionalProgramming = "Shay Green";
     
@@ -55,6 +55,11 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     scope.setNumSamplesPerPixel (2);
     scope.setVerticalZoomFactor (3.0f);
+    scope.setColour (gin::TriggeredScope::lineColourId, findColour (gin::PluginLookAndFeel::grey45ColourId));
+    scope.setColour (gin::TriggeredScope::traceColourId + 0, findColour (gin::PluginLookAndFeel::accentColourId));
+    scope.setColour (gin::TriggeredScope::envelopeColourId + 0, juce::Colours::transparentBlack);
+    scope.setColour (gin::TriggeredScope::traceColourId + 1, findColour (gin::PluginLookAndFeel::accentColourId));
+    scope.setColour (gin::TriggeredScope::envelopeColourId + 1, juce::Colours::transparentBlack);
 }
 
 RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
@@ -64,7 +69,7 @@ RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
 //==============================================================================
 void RP2A03AudioProcessorEditor::paint (Graphics& g)
 {
-    GinAudioProcessorEditor::paint (g);
+    gin::ProcessorEditor::paint (g);
         
     g.drawImageAt (logo, getWidth() / 2 - logo.getWidth() / 2, 0);
 }
@@ -73,7 +78,7 @@ void RP2A03AudioProcessorEditor::resized()
 {
     using AP = RP2A03AudioProcessor;
     
-    GinAudioProcessorEditor::resized();
+    gin::ProcessorEditor::resized();
     
     componentForId (AP::paramPulse1Level)->setBounds (getGridArea (0, 0));
     componentForId (AP::paramPulse1DutyCycle)->setBounds (getGridArea (1, 0));
