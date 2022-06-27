@@ -18,16 +18,15 @@ class RP2A03AudioProcessorEditor  : public gin::ProcessorEditor
 {
 public:
     RP2A03AudioProcessorEditor (RP2A03AudioProcessor&);
-    ~RP2A03AudioProcessorEditor();
+    ~RP2A03AudioProcessorEditor() override;
 
     //==============================================================================
     void resized() override;
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
 
     RP2A03AudioProcessor& proc;
     
     gin::TriggeredScope scope {proc.fifo};
-    Image logo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RP2A03AudioProcessorEditor)
 };

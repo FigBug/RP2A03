@@ -28,10 +28,10 @@ public:
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
-    void processBlock (AudioSampleBuffer&, MidiBuffer&) override;
+    void processBlock (juce::AudioSampleBuffer&, juce::MidiBuffer&) override;
 
     //==============================================================================
-    AudioProcessorEditor* createEditor() override;
+	juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override;
 
     //==============================================================================
@@ -58,15 +58,15 @@ public:
     gin::AudioFifo fifo {1, 44100};
     
 private:
-    void runUntil (int& done, AudioSampleBuffer& buffer, int pos);
+    void runUntil (int& done, juce::AudioSampleBuffer& buffer, int pos);
     void runOsc (int curNote, bool trigger);
     void writeReg (int reg, int value, bool force);
     
     int lastNote = -1;
     int velocity = 0;
-    Array<int> noteQueue;
+	juce::Array<int> noteQueue;
     
-    LinearSmoothedValue<float> outputSmoothed;
+	juce::LinearSmoothedValue<float> outputSmoothed;
     
     Simple_Apu apu;
     

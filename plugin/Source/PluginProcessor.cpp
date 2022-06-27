@@ -11,8 +11,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-using namespace gin;
-
 const char* RP2A03AudioProcessor::paramPulse1Level      = "pulse1Level";
 const char* RP2A03AudioProcessor::paramPulse1DutyCycle  = "pulse1Duty";
 const char* RP2A03AudioProcessor::paramPulse2Level      = "pulse2Level";
@@ -33,17 +31,17 @@ const char* RP2A03AudioProcessor::paramPulse2Sweep      = "pulse2Sweep";
 const char* RP2A03AudioProcessor::paramPulse2Shift      = "pulse2Shift";
 
 //==============================================================================
-String percentTextFunction (const Parameter& p, float v)
+static juce::String percentTextFunction (const gin::Parameter& p, float v)
 {
-    return String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
+    return juce::String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
 }
 
-String onOffTextFunction (const Parameter&, float v)
+static juce::String onOffTextFunction (const gin::Parameter&, float v)
 {
     return v > 0.0f ? "On" : "Off";
 }
 
-String dutyTextFunction (const Parameter&, float v)
+static juce::String dutyTextFunction (const gin::Parameter&, float v)
 {
     const int duty = int (v);
     switch (duty)
@@ -56,20 +54,20 @@ String dutyTextFunction (const Parameter&, float v)
     return "";
 }
 
-String sweepTextFunction (const Parameter&, float v)
+static juce::String sweepTextFunction (const gin::Parameter&, float v)
 {
-    String str;
+	juce::String str;
     switch (int (v))
     {
         case 0: str = "Off"; break;
-        default: str = String (int (v));
+		default: str = juce::String (int (v));
     }
     return str;
 }
 
-String intTextFunction (const Parameter&, float v)
+static juce::String intTextFunction (const gin::Parameter&, float v)
 {
-    return String (int (v));
+    return juce::String (int (v));
 }
 
 //==============================================================================
@@ -112,9 +110,9 @@ void RP2A03AudioProcessor::releaseResources()
 {
 }
 
-void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int pos)
+void RP2A03AudioProcessor::runUntil (int& done, juce::AudioSampleBuffer& buffer, int pos)
 {
-    int todo = jmin (pos, buffer.getNumSamples()) - done;
+    int todo = std::min (pos, buffer.getNumSamples()) - done;
     
     while (todo > 0)
     {
@@ -122,7 +120,7 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
             apu.step();
         
         Simple_Apu::sample_t out[1024];
-        int count = int (apu.read_samples(out, jmin (todo, int (apu.samples_avail()), 1024)));
+		int count = int (apu.read_samples (out, std::min ({todo, int (apu.samples_avail()), 1024})));
         
         float* data = buffer.getWritePointer (0, done);
         for (int i = 0; i < count; i++)
@@ -134,8 +132,9 @@ void RP2A03AudioProcessor::runUntil (int& done, AudioSampleBuffer& buffer, int p
 
 }
 
-void RP2A03AudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midi)
+void RP2A03AudioProcessor::processBlock (juce::AudioSampleBuffer& buffer, juce::MidiBuffer& midi)
 {
+	buffer.clear();
     outputSmoothed.setTargetValue (getParameter (paramOutput)->getUserValue());
 
     int done = 0;
@@ -206,7 +205,7 @@ void RP2A03AudioProcessor::runOsc (int curNote, bool trigger)
     int v = curNote == -1 ? 0 : velocity;
     
     // Pulse 1
-    int period1 = int (111860.8 / getMidiNoteInHertz (curNote + p1Tune + p1Fine / 100.0) - 1);
+    int period1 = int (111860.8 / gin::getMidiNoteInHertz (curNote + p1Tune + p1Fine / 100.0) - 1);
     if (period1 <= 0x7ff && curNote != -1)
     {
         writeReg (0x4000, (p1Duty << 6) | 0x30 | int (p1Level * v / 127.0 * 0xF), trigger);
@@ -229,7 +228,7 @@ void RP2A03AudioProcessor::runOsc (int curNote, bool trigger)
     }
 
     // Pulse 2
-    int period2 = int (111860.8 / getMidiNoteInHertz (curNote + p2Tune + p2Fine / 100.0) - 1);
+    int period2 = int (111860.8 / gin::getMidiNoteInHertz (curNote + p2Tune + p2Fine / 100.0) - 1);
     if (period2 < 0x7ff && curNote != -1)
     {
         writeReg (0x4004, (p2Duty << 6) | 0x30 | int (p2Level * v / 127.0 * 0xF), trigger);
@@ -252,7 +251,7 @@ void RP2A03AudioProcessor::runOsc (int curNote, bool trigger)
     }
     
     // Triangle
-    int period3 = int (tLevel == 1.0f ? 111860.8 / getMidiNoteInHertz (curNote + tTune + tFine / 100.0) * 2 - 1 : 0);
+    int period3 = int (tLevel == 1.0f ? 111860.8 / gin::getMidiNoteInHertz (curNote + tTune + tFine / 100.0) * 2 - 1 : 0);
     if (period3 > 0 && period3 <= 0x7ff && curNote != -1)
     {
         writeReg (0x4008, 0xFF, trigger);
@@ -293,14 +292,14 @@ bool RP2A03AudioProcessor::hasEditor() const
     return true;
 }
 
-AudioProcessorEditor* RP2A03AudioProcessor::createEditor()
+juce::AudioProcessorEditor* RP2A03AudioProcessor::createEditor()
 {
     return new RP2A03AudioProcessorEditor (*this);
 }
 
 //==============================================================================
 // This creates new instances of the plugin..
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new RP2A03AudioProcessor();
 }

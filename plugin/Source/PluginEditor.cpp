@@ -12,8 +12,6 @@
 #include "PluginEditor.h"
 #include "BinaryData.h"
 
-using namespace gin;
-
 //==============================================================================
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
   : gin::ProcessorEditor (p), proc (p)
@@ -22,12 +20,10 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
     
     using AP = RP2A03AudioProcessor;
     
-    logo = ImageFileFormat::loadFrom (BinaryData::logo_png, BinaryData::logo_pngSize);
-    
     for (auto pp : p.getPluginParameters())
     {
         auto uid = pp->getUid();
-        ParamComponent* c;
+        gin::ParamComponent* c;
         
         if (uid == AP::paramPulse1Tune       ||
             uid == AP::paramPulse1TuneFine   ||
@@ -38,11 +34,11 @@ RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
             uid == AP::paramPulse1Sweep      ||
             uid == AP::paramPulse2Sweep)
         {
-            c = new Knob (pp, true);
+            c = new gin::Knob (pp, true);
         }
         else
         {
-            c = pp->isOnOff() ? (ParamComponent*)new Switch (pp) : (ParamComponent*)new Knob (pp);
+            c = pp->isOnOff() ? (gin::ParamComponent*)new gin::Switch (pp) : (gin::ParamComponent*)new gin::Knob (pp);
         }
         
         addAndMakeVisible (c);
@@ -67,11 +63,9 @@ RP2A03AudioProcessorEditor::~RP2A03AudioProcessorEditor()
 }
 
 //==============================================================================
-void RP2A03AudioProcessorEditor::paint (Graphics& g)
+void RP2A03AudioProcessorEditor::paint (juce::Graphics& g)
 {
     gin::ProcessorEditor::paint (g);
-        
-    g.drawImageAt (logo, getWidth() / 2 - logo.getWidth() / 2, 0);
 }
 
 void RP2A03AudioProcessorEditor::resized()
