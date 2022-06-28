@@ -11,9 +11,9 @@
               displaySplashScreen="1" reportAppUsage="0" splashScreenColour="Dark"
               cppLanguageStandard="17" companyCopyright="SocaLabs" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginAUMainType="'aumu'" pluginVSTCategory="kPlugCategSynth"
-              pluginFormats="buildAU,buildStandalone,buildVST,buildVST3" buildVST="1"
-              buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0" buildAAX="0"
-              buildStandalone="1" enableIAA="0" defines="JUCE_DISPLAY_SPLASH_SCREEN=0&#10;JUCE_MODAL_LOOPS_PERMITTED=1"
+              pluginFormats="buildAU,buildLV2,buildStandalone,buildVST,buildVST3"
+              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" buildStandalone="1" enableIAA="0" defines="JUCE_DISPLAY_SPLASH_SCREEN=0&#10;JUCE_MODAL_LOOPS_PERMITTED=1"
               jucerFormatVersion="1" useAppConfig="0" addUsingNamespaceToJuceHeader="0">
   <MAINGROUP id="dPRjsF" name="RP2A03">
     <GROUP id="{EE796482-0D02-0052-80F4-B1FE6CE0D41A}" name="Source">
