@@ -16,8 +16,6 @@
 RP2A03AudioProcessorEditor::RP2A03AudioProcessorEditor (RP2A03AudioProcessor& p)
   : gin::ProcessorEditor (p), proc (p)
 {
-    additionalProgramming = "Shay Green";
-    
     using AP = RP2A03AudioProcessor;
     
     for (auto pp : p.getPluginParameters())

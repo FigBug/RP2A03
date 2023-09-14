@@ -72,6 +72,7 @@ static juce::String intTextFunction (const gin::Parameter&, float v)
 
 //==============================================================================
 RP2A03AudioProcessor::RP2A03AudioProcessor()
+    : gin::Processor (false, gin::ProcessorOptions().withAdditionalCredits({"Shay Green"}))
 {
     addExtParam (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 1.0f, 0.0f, percentTextFunction);
     addExtParam (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", {    0.0f,   3.0f, 1.0f, 1.0f }, 0.0f, 0.0f, dutyTextFunction);
@@ -91,6 +92,8 @@ RP2A03AudioProcessor::RP2A03AudioProcessor()
     addExtParam (paramPulse1Shift,     "Pulse 1 Shift",      "Shift",       "", {    0.0f,   7.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
     addExtParam (paramPulse2Sweep,     "Pulse 2 Sweep",      "Sweep",       "", {   -8.0f,   8.0f, 1.0f, 1.0f }, 0.0f, 0.0f, sweepTextFunction);
     addExtParam (paramPulse2Shift,     "Pulse 2 Shift",      "Shift",       "", {    0.0f,   7.0f, 1.0f, 1.0f }, 0.0f, 0.0f, intTextFunction);
+
+    init();
 }
 
 RP2A03AudioProcessor::~RP2A03AudioProcessor()
