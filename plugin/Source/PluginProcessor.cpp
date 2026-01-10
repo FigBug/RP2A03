@@ -71,8 +71,16 @@ static juce::String intTextFunction (const gin::Parameter&, float v)
 }
 
 //==============================================================================
+static gin::ProcessorOptions createProcessorOptions()
+{
+    gin::ProcessorOptions opts;
+    opts.withAdditionalCredits ({"Shay Green"});
+    opts.hasMidiLearn = true;
+    return opts;
+}
+
 RP2A03AudioProcessor::RP2A03AudioProcessor()
-    : gin::Processor (false, gin::ProcessorOptions().withAdditionalCredits({"Shay Green"}))
+    : gin::Processor (false, createProcessorOptions())
 {
     addExtParam (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 1.0f, 0.0f, percentTextFunction);
     addExtParam (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", {    0.0f,   3.0f, 1.0f, 1.0f }, 0.0f, 0.0f, dutyTextFunction);
@@ -137,6 +145,9 @@ void RP2A03AudioProcessor::runUntil (int& done, juce::AudioSampleBuffer& buffer,
 
 void RP2A03AudioProcessor::processBlock (juce::AudioSampleBuffer& buffer, juce::MidiBuffer& midi)
 {
+    if (midiLearn)
+        midiLearn->processBlock (midi, buffer.getNumSamples());
+
 	buffer.clear();
     outputSmoothed.setTargetValue (getParameter (paramOutput)->getUserValue());
 
