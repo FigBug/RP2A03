@@ -73,10 +73,9 @@ static juce::String intTextFunction (const gin::Parameter&, float v)
 //==============================================================================
 static gin::ProcessorOptions createProcessorOptions()
 {
-    gin::ProcessorOptions opts;
-    opts.withAdditionalCredits ({"Shay Green"});
-    opts.hasMidiLearn = true;
-    return opts;
+    return gin::ProcessorOptions()
+        .withAdditionalCredits ({"Shay Green"})
+        .withMidiLearn();
 }
 
 RP2A03AudioProcessor::RP2A03AudioProcessor()
