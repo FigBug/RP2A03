@@ -12,7 +12,7 @@
         <line choice="com.socalabs.rp2a03.vst3"/>
         <line choice="com.socalabs.rp2a03.au"/>
         <line choice="com.socalabs.rp2a03.clap"/>
-
+        <line choice="com.socalabs.rp2a03.resources"/>
     </choices-outline>
 
     <choice id="com.socalabs.rp2a03.vst"
@@ -43,10 +43,18 @@
         <pkg-ref id="com.socalabs.rp2a03.clap.pkg"/>
     </choice>
 
+    <choice id="com.socalabs.rp2a03.resources"
+            title="Factory Presets"
+            description="Install factory content to /Library/Audio/Presets/SocaLabs/RP2A03"
+            visible="true"
+            enabled="false"
+            selected="true">
+        <pkg-ref id="com.socalabs.rp2a03.resources.pkg"/>
+    </choice>
 
     <pkg-ref id="com.socalabs.rp2a03.vst.pkg"   version="0">vst.pkg</pkg-ref>
     <pkg-ref id="com.socalabs.rp2a03.vst3.pkg"  version="0">vst3.pkg</pkg-ref>
     <pkg-ref id="com.socalabs.rp2a03.au.pkg"    version="0">au.pkg</pkg-ref>
     <pkg-ref id="com.socalabs.rp2a03.clap.pkg"  version="0">clap.pkg</pkg-ref>
-
+    <pkg-ref id="com.socalabs.rp2a03.resources.pkg" version="0">resources.pkg</pkg-ref>
 </installer-gui-script>

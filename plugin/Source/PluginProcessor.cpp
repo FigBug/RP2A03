@@ -71,6 +71,47 @@ static juce::String intTextFunction (const gin::Parameter&, float v)
 }
 
 //==============================================================================
+//==============================================================================
+namespace
+{
+    juce::File userResourceRoot()
+    {
+       #if JUCE_MAC
+        return juce::File::getSpecialLocation (juce::File::userHomeDirectory)
+                  .getChildFile ("Library/Audio/Presets/SocaLabs/RP2A03");
+       #elif JUCE_WINDOWS
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("SocaLabs/RP2A03");
+       #else
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("SocaLabs/RP2A03");
+       #endif
+    }
+
+    juce::File systemResourceRoot()
+    {
+       #if JUCE_MAC
+        return juce::File ("/Library/Audio/Presets/SocaLabs/RP2A03");
+       #elif JUCE_WINDOWS
+        return juce::File::getSpecialLocation (juce::File::commonApplicationDataDirectory)
+                  .getChildFile ("SocaLabs/RP2A03");
+       #else
+        return juce::File ("/usr/share/SocaLabs/RP2A03");
+       #endif
+    }
+
+    juce::File legacyUserProgramDirectory()
+    {
+       #if JUCE_MAC
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("Application Support/com.socalabs/RP2A03/programs");
+       #else
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("com.socalabs/RP2A03/programs");
+       #endif
+    }
+}
+
 static gin::ProcessorOptions createProcessorOptions()
 {
     return gin::ProcessorOptions()
@@ -316,3 +357,17 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new RP2A03AudioProcessor();
 }
+//==============================================================================
+juce::File RP2A03AudioProcessor::getProgramDirectory()
+{
+    auto dir = userResourceRoot().getChildFile ("Presets");
+    if (! dir.isDirectory())
+        dir.createDirectory();
+    return dir;
+}
+
+juce::Array<juce::File> RP2A03AudioProcessor::getFactoryProgramDirectories()
+{
+    return { systemResourceRoot().getChildFile ("Presets") };
+}
+

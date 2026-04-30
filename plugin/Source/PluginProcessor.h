@@ -21,6 +21,9 @@ class RP2A03AudioProcessor : public gin::Processor
 {
 public:
     //==============================================================================
+    juce::File getProgramDirectory() override;
+    juce::Array<juce::File> getFactoryProgramDirectories() override;
+
     RP2A03AudioProcessor();
     ~RP2A03AudioProcessor() override;
 

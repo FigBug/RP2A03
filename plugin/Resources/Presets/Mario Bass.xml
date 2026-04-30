@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<state name="Mario Bass" valueTree="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;state/&gt;&#13;&#10;">
+  <param uid="pulse1Level" val="1.0"/>
+  <param uid="pulse1Duty" val="1.0"/>
+  <param uid="pulse1Tune" val="-24.0"/>
+  <param uid="pulse1TuneFine" val="0.0"/>
+  <param uid="pulse1Sweep" val="0.0"/>
+  <param uid="pulse1Shift" val="0.0"/>
+  <param uid="pulse2Level" val="0.0"/>
+  <param uid="pulse2Duty" val="2.0"/>
+  <param uid="pulse2Tune" val="0.0"/>
+  <param uid="pulse2TuneFine" val="0.0"/>
+  <param uid="pulse2Sweep" val="0.0"/>
+  <param uid="pulse2Shift" val="0.0"/>
+  <param uid="triangleLevel" val="1.0"/>
+  <param uid="triangleTune" val="-24.0"/>
+  <param uid="triangleTuneFine" val="0.0"/>
+  <param uid="noiseLevel" val="0.0"/>
+  <param uid="noisePeriod" val="0.0"/>
+  <param uid="output" val="1.0"/>
+</state>

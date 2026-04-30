@@ -3,4 +3,5 @@ rm -Rf "/Library/Audio/Plug-Ins/VST/RP2A03.vst"
 rm -Rf "/Library/Audio/Plug-Ins/VST3/RP2A03.vst3"
 rm -Rf "/Library/Audio/Plug-Ins/Components/RP2A03.component"
 rm -Rf "/Library/Audio/Plug-Ins/CLAP/RP2A03.clap"
+rm -Rf "/Library/Audio/Presets/SocaLabs/RP2A03/Presets"
 exit 0
