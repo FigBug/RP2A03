@@ -58,13 +58,13 @@ Name: "clap";      Description: "CLAP plug-in";  Types: full custom; Flags: chec
 Name: "resources"; Description: "Factory presets"; Types: full custom; Flags: fixed
 
 [InstallDelete]
-Type: files;          Name: "{commoncf64}\VST\RP2A03.dll";   Components: vst
+Type: files;          Name: "{commoncf64}\VST2\RP2A03.dll";   Components: vst
 Type: filesandordirs; Name: "{commoncf64}\VST3\RP2A03.vst3"; Components: vst3
 Type: files;          Name: "{commoncf64}\CLAP\RP2A03.clap"; Components: clap
 Type: filesandordirs; Name: "{commonappdata}\SocaLabs\RP2A03\Presets";        Components: resources
 
 [Files]
-Source: "bin\VST\RP2A03.dll";    DestDir: "{commoncf64}\VST";                     Flags: ignoreversion overwritereadonly; Components: vst
+Source: "bin\VST\RP2A03.dll";    DestDir: "{commoncf64}\VST2";                     Flags: ignoreversion overwritereadonly; Components: vst
 Source: "bin\VST3\RP2A03.vst3\*"; DestDir: "{commoncf64}\VST3\RP2A03.vst3\"; Flags: ignoreversion overwritereadonly recursesubdirs; Components: vst3
 Source: "bin\CLAP\RP2A03.clap";   DestDir: "{commoncf64}\CLAP";                    Flags: ignoreversion overwritereadonly; Components: clap
 Source: "..\_flat_presets\*.xml"; DestDir: "{commonappdata}\SocaLabs\RP2A03\Presets\"; Flags: ignoreversion; Components: resources
