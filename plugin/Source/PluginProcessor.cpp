@@ -11,6 +11,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include <mutex>
+
 const char* RP2A03AudioProcessor::paramPulse1Level      = "pulse1Level";
 const char* RP2A03AudioProcessor::paramPulse1DutyCycle  = "pulse1Duty";
 const char* RP2A03AudioProcessor::paramPulse2Level      = "pulse2Level";
@@ -119,9 +121,31 @@ static gin::ProcessorOptions createProcessorOptions()
         .withMidiLearn();
 }
 
+// If the shared CrashReporter is installed, launch it once per process (on the
+// first plugin instance) so it can scan and upload any crash from last session.
+static void launchCrashReporterOnce()
+{
+    static std::once_flag flag;
+    std::call_once (flag, []
+    {
+       #if JUCE_MAC
+        juce::File app ("/Library/Application Support/Rabien Software/Crash Reporter/CrashReporter.app");
+       #elif JUCE_WINDOWS
+        auto app = juce::File::getSpecialLocation (juce::File::globalApplicationsDirectory)
+                       .getChildFile ("Rabien Software").getChildFile ("Crash Reporter").getChildFile ("CrashReporter.exe");
+       #else
+        juce::File app;
+       #endif
+
+        if (app.exists())
+            juce::Process::openDocument (app.getFullPathName(), {});
+    });
+}
+
 RP2A03AudioProcessor::RP2A03AudioProcessor()
     : gin::Processor (false, createProcessorOptions())
 {
+    launchCrashReporterOnce();
     addExtParam (paramPulse1Level,     "Pulse 1 Level",      "Pulse",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 1.0f, 0.0f, percentTextFunction);
     addExtParam (paramPulse1DutyCycle, "Pulse 1 Duty Cycle", "Duty Cycle",  "", {    0.0f,   3.0f, 1.0f, 1.0f }, 0.0f, 0.0f, dutyTextFunction);
     addExtParam (paramPulse2Level,     "Pulse 2 Level",      "Pulse",       "", {    0.0f,   1.0f, 0.0f, 1.0f }, 0.0f, 0.0f, percentTextFunction);
