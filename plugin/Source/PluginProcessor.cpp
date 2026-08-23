@@ -33,43 +33,67 @@ const char* RP2A03AudioProcessor::paramPulse2Sweep      = "pulse2Sweep";
 const char* RP2A03AudioProcessor::paramPulse2Shift      = "pulse2Shift";
 
 //==============================================================================
-static juce::String percentTextFunction (const gin::Parameter& p, float v)
+static std::variant<float, juce::String> percentTextFunction (const gin::Parameter& p, const std::variant<float, juce::String>& in)
 {
-    return juce::String::formatted("%.0f%%", v / p.getUserRangeEnd() * 100);
+    if (auto v = std::get_if<float> (&in))
+        return juce::String::formatted ("%.0f%%", *v / p.getUserRangeEnd() * 100);
+
+    return std::get<juce::String> (in).getFloatValue() / 100.0f * p.getUserRangeEnd();
 }
 
-static juce::String onOffTextFunction (const gin::Parameter&, float v)
+static std::variant<float, juce::String> onOffTextFunction (const gin::Parameter&, const std::variant<float, juce::String>& in)
 {
-    return v > 0.0f ? "On" : "Off";
+    if (auto v = std::get_if<float> (&in))
+        return juce::String (*v > 0.0f ? "On" : "Off");
+
+    auto t = std::get<juce::String> (in).trim();
+    if (t.equalsIgnoreCase ("On"))  return 1.0f;
+    if (t.equalsIgnoreCase ("Off")) return 0.0f;
+    return t.getFloatValue();
 }
 
-static juce::String dutyTextFunction (const gin::Parameter&, float v)
+static std::variant<float, juce::String> dutyTextFunction (const gin::Parameter&, const std::variant<float, juce::String>& in)
 {
-    const int duty = int (v);
-    switch (duty)
+    if (auto v = std::get_if<float> (&in))
     {
-        case 0: return "12.5%";
-        case 1: return "25%";
-        case 2: return "50%";
-        case 3: return "75%";
+        switch (int (*v))
+        {
+            case 0: return juce::String ("12.5%");
+            case 1: return juce::String ("25%");
+            case 2: return juce::String ("50%");
+            case 3: return juce::String ("75%");
+        }
+        return juce::String();
     }
-    return "";
+
+    auto pct = std::get<juce::String> (in).getFloatValue();
+    if (pct <= 18.75f) return 0.0f;
+    if (pct <= 37.5f)  return 1.0f;
+    if (pct <= 62.5f)  return 2.0f;
+    return 3.0f;
 }
 
-static juce::String sweepTextFunction (const gin::Parameter&, float v)
+static std::variant<float, juce::String> sweepTextFunction (const gin::Parameter&, const std::variant<float, juce::String>& in)
 {
-	juce::String str;
-    switch (int (v))
+    if (auto v = std::get_if<float> (&in))
     {
-        case 0: str = "Off"; break;
-		default: str = juce::String (int (v));
+        if (int (*v) == 0)
+            return juce::String ("Off");
+        return juce::String (int (*v));
     }
-    return str;
+
+    auto t = std::get<juce::String> (in).trim();
+    if (t.equalsIgnoreCase ("Off"))
+        return 0.0f;
+    return t.getFloatValue();
 }
 
-static juce::String intTextFunction (const gin::Parameter&, float v)
+static std::variant<float, juce::String> intTextFunction (const gin::Parameter&, const std::variant<float, juce::String>& in)
 {
-    return juce::String (int (v));
+    if (auto v = std::get_if<float> (&in))
+        return juce::String (int (*v));
+
+    return std::get<juce::String> (in).getFloatValue();
 }
 
 //==============================================================================
